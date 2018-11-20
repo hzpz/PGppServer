@@ -1,0 +1,170 @@
+import csv
+import logging
+import requests
+import schedule
+import threading
+import time
+from bottle import post, run, request
+from datetime import datetime
+
+# Configuration
+host = '0.0.0.0'
+port = 7477
+min_raid_level = 3
+webhook_url = 'http://localhost:4000'
+teleport_delay_minutes = 1
+# /Configuration
+
+logging.basicConfig(
+    format='%(asctime)s %(levelname)-5s [%(name)-22.22s] %(message)s',
+    level=logging.DEBUG
+)
+log = logging.getLogger('PGppServer')
+
+seen_raids = {}
+locations = []
+current_location = {}
+current_location_index = 0
+
+
+@post('/loc')
+def loc():
+    return {
+        "lat": current_location['latitude'],
+        "lng": current_location['longitude'],
+        "latitude": current_location['latitude'],
+        "longitude": current_location['longitude']
+    }
+
+
+@post('/data')
+def data():
+    pg_data = request.json
+    for gym in pg_data['gyms']:
+        if has_raid(gym):
+            raid = parse_raid(gym)
+            log.debug('Raw raid: %s', raid)
+
+            if seen(raid):
+                log.debug('Already seen raid at %s', raid['gym_id'])
+                continue
+
+            if raid['pokemon_id']:
+                log.info('Found level %s raid at %s with pokémon %s running until %s',
+                         raid['level'], raid['gym_id'], raid['pokemon_id'],
+                         datetime.fromtimestamp(raid['end']).strftime('%H:%M'))
+            else:
+                log.info('Found level %s egg at %s starting at %s',
+                         raid['level'], raid['gym_id'],
+                         datetime.fromtimestamp(raid['start']).strftime('%H:%M'))
+
+            send_to_webhook(raid)
+            mark_seen(raid)
+
+
+def has_raid(gym):
+    return gym['raidLevel'] >= min_raid_level
+
+
+def seen(raid):
+    global seen_raids
+    return raid['gym_id'] in seen_raids and seen_raids[raid['gym_id']] == raid['spawn']
+
+
+def mark_seen(raid):
+    global seen_raids
+    seen_raids.update({raid['gym_id']: raid['spawn']})
+
+
+def parse_raid(gym):
+    raid_spawn = datetime_from_utc_to_local(parse_timestamp_in_millis(gym['raidSpawnMs']))
+    raid_start = datetime_from_utc_to_local(parse_timestamp_in_millis(gym['raidBattleMs']))
+    raid_end = datetime_from_utc_to_local(parse_timestamp_in_millis(gym['raidEndMs']))
+
+    raid = {
+        "gym_id": gym['gym_id'],
+        "latitude": gym['latitude'],
+        "longitude": gym['longitude'],
+        "spawn": raid_spawn.timestamp(),
+        "start": raid_start.timestamp(),
+        "end": raid_end.timestamp(),
+        "level": gym['raidLevel'],
+        "pokemon_id": None,
+        "cp": None,
+        "move_1": None,
+        "move_2": None
+    }
+
+    raid_boss = gym['raidPokemon']
+    if raid_boss != 0:
+        raid.update({
+            "pokemon_id": raid_boss,
+            "cp": gym['cp'],
+            "move_1": gym['move1'],
+            "move_2": gym['move2']
+        })
+
+    return raid
+
+
+def datetime_from_utc_to_local(utc_datetime):
+    now_timestamp = time.time()
+    offset = datetime.fromtimestamp(now_timestamp) - datetime.utcfromtimestamp(now_timestamp)
+    return utc_datetime + offset
+
+
+def parse_timestamp_in_millis(timestamp_in_millis):
+    return datetime.utcfromtimestamp(timestamp_in_millis / 1000)
+
+
+def send_to_webhook(raid):
+    requests.post(webhook_url, json=[{
+        "type": "raid",
+        "message": raid
+    }])
+
+
+def get_locations():
+    locations_from_csv = []
+    with open('locations.csv', newline='') as locations_file:
+        reader = csv.reader(locations_file)
+        for row in reader:
+            locations_from_csv.append(
+                {
+                    "latitude": row[0],
+                    "longitude": row[1]
+                })
+    log.info('Read %s location(s) from CSV file', len(locations_from_csv))
+    return locations_from_csv
+
+
+def change_location():
+    global current_location, current_location_index
+    current_location_index += 1
+    if current_location_index >= len(locations):
+        current_location_index = 0
+    current_location = locations[current_location_index]
+    log.debug('Changed location to %s', current_location)
+
+
+def continuously_run_scheduler():
+    class ScheduleThread(threading.Thread):
+        @classmethod
+        def run(cls):
+            while True:
+                schedule.run_pending()
+                time.sleep(1)
+
+    continuous_thread = ScheduleThread()
+    continuous_thread.setDaemon(True)
+    continuous_thread.start()
+
+
+if __name__ == '__main__':
+    locations = get_locations()
+    current_location = locations[current_location_index]
+    schedule.every(teleport_delay_minutes).minutes.do(change_location)
+    continuously_run_scheduler()
+
+    log.info('Starting PGppServer...')
+    run(host=host, port=port, quiet=True)
