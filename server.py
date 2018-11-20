@@ -1,5 +1,7 @@
 import csv
+import json
 import logging
+import os.path
 import requests
 import schedule
 import threading
@@ -13,6 +15,7 @@ port = 7477
 min_raid_level = 3
 webhook_url = 'http://localhost:4000'
 teleport_delay_minutes = 1
+seen_raids_filename = 'seen.cache'
 # /Configuration
 
 logging.basicConfig(
@@ -139,12 +142,17 @@ def get_locations():
 
 
 def change_location():
-    global current_location, current_location_index
+    global locations, current_location_index
     current_location_index += 1
     if current_location_index >= len(locations):
         current_location_index = 0
+    set_current_location()
+
+
+def set_current_location():
+    global locations, current_location, current_location_index
     current_location = locations[current_location_index]
-    log.debug('Changed location to %s', current_location)
+    log.info('Current location: %s', current_location)
 
 
 def continuously_run_scheduler():
@@ -160,11 +168,35 @@ def continuously_run_scheduler():
     continuous_thread.start()
 
 
-if __name__ == '__main__':
-    locations = get_locations()
-    current_location = locations[current_location_index]
-    schedule.every(teleport_delay_minutes).minutes.do(change_location)
+def load_seen_raids():
+    if not os.path.exists(seen_raids_filename):
+        return {}
+
+    with open(seen_raids_filename) as seen_file:
+        seen_json = json.loads(seen_file.read())
+        log.debug('Loaded %s seen raids', len(seen_json))
+        return seen_json
+
+
+def save_seen_raids(seen_dict):
+    seen_json = json.dumps(seen_dict, indent=1)
+    with open(seen_raids_filename, 'w') as seen_file:
+        seen_file.write(seen_json)
+    log.debug('Saved %s seen raids', len(seen_dict))
+
+
+def schedule_teleports(delay):
+    schedule.every(delay).minutes.do(change_location)
     continuously_run_scheduler()
 
+
+if __name__ == '__main__':
     log.info('Starting PGppServer...')
+    locations = get_locations()
+    set_current_location()
+    schedule_teleports(teleport_delay_minutes)
+    seen_raids = load_seen_raids()
     run(host=host, port=port, quiet=True)
+
+    log.info('Stopping PGppServer...')
+    save_seen_raids(seen_raids)
