@@ -71,12 +71,21 @@ def has_raid(gym):
 
 def seen(raid):
     global seen_raids
-    return raid['gym_id'] in seen_raids and seen_raids[raid['gym_id']] == raid['spawn']
+    if raid['gym_id'] not in seen_raids:
+        return False
+
+    if raid['level'] > 0:
+        return seen_raids[raid['gym_id']] == raid['start']
+    else:
+        return seen_raids[raid['gym_id']] == raid['spawn']
 
 
 def mark_seen(raid):
     global seen_raids
-    seen_raids.update({raid['gym_id']: raid['spawn']})
+    if raid['level'] > 0:
+        seen_raids.update({raid['gym_id']: raid['start']})
+    else:
+        seen_raids.update({raid['gym_id']: raid['spawn']})
 
 
 def parse_raid(gym):
