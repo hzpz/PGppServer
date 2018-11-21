@@ -69,12 +69,16 @@ def has_raid(gym):
     return gym['raidLevel'] >= min_raid_level
 
 
+def is_active(raid):
+    return raid['pokemon_id'] is not None
+
+
 def seen(raid):
     global seen_raids
     if raid['gym_id'] not in seen_raids:
         return False
 
-    if raid['level'] > 0:
+    if is_active(raid):
         return seen_raids[raid['gym_id']] == raid['start']
     else:
         return seen_raids[raid['gym_id']] == raid['spawn']
@@ -82,7 +86,7 @@ def seen(raid):
 
 def mark_seen(raid):
     global seen_raids
-    if raid['level'] > 0:
+    if is_active(raid):
         seen_raids.update({raid['gym_id']: raid['start']})
     else:
         seen_raids.update({raid['gym_id']: raid['spawn']})
