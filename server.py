@@ -7,6 +7,7 @@ import schedule
 import threading
 import time
 from bottle import post, run, request
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 
 # Configuration
@@ -28,6 +29,7 @@ seen_raids = {}
 locations = []
 current_location = {}
 current_location_index = 0
+executor = ThreadPoolExecutor(max_workers=2)
 
 
 @post('/loc')
@@ -61,8 +63,12 @@ def data():
                          raid['level'], raid['gym_id'],
                          datetime.fromtimestamp(raid['start']).strftime('%H:%M'))
 
-            send_to_webhook(raid)
-            mark_seen(raid)
+            executor.submit(publish, raid)
+
+
+def publish(raid):
+    send_to_webhook(raid)
+    mark_seen(raid)
 
 
 def has_raid(gym):
