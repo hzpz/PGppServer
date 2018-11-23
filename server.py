@@ -1,3 +1,5 @@
+import sys
+
 import csv
 import json
 import logging
@@ -16,6 +18,7 @@ port = 7477
 min_raid_level = 3
 webhook_url = 'http://localhost:4000'
 teleport_delay_minutes = 1
+locations_csv_filename = 'locations.csv'
 seen_raids_filename = 'seen.cache'
 # /Configuration
 
@@ -147,15 +150,28 @@ def send_to_webhook(raid):
 
 
 def get_locations():
+    if not os.path.exists(locations_csv_filename):
+        log.error('Unable to find CSV file with locations: %s', locations_csv_filename)
+        sys.exit(1)
+
     locations_from_csv = []
-    with open('locations.csv', newline='') as locations_file:
+    with open(locations_csv_filename, newline='') as locations_file:
         reader = csv.reader(locations_file)
         for row in reader:
+            if len(row) != 2:
+                log.error('Ignoring CSV line with wrong format: %s', row)
+                continue
+
             locations_from_csv.append(
                 {
                     "latitude": row[0],
                     "longitude": row[1]
                 })
+
+    if len(locations_from_csv) == 0:
+        log.error('CSV file with locations was empty or invalid: %s', locations_csv_filename)
+        sys.exit(1)
+
     log.info('Read %s location(s) from CSV file', len(locations_from_csv))
     return locations_from_csv
 
