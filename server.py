@@ -33,6 +33,9 @@ locations = []
 current_location = {}
 current_location_index = 0
 executor = ThreadPoolExecutor(max_workers=2)
+pokemon_names = {}
+move_names = {}
+team_names = {}
 
 
 @post('/loc')
@@ -58,9 +61,10 @@ def data():
                 continue
 
             if raid['pokemon_id']:
-                log.info('Found level %s raid at %s with pokémon %s running until %s',
-                         raid['level'], raid['gym_id'], raid['pokemon_id'],
-                         datetime.fromtimestamp(raid['end']).strftime('%H:%M'))
+                log.info('Found %s raid (%s/%s) at %s running until %s',
+                         pokemon_names[raid['pokemon_id']],
+                         move_names[raid['move_1']], move_names[raid['move_2']],
+                         raid['gym_id'], datetime.fromtimestamp(raid['end']).strftime('%H:%M'))
             else:
                 log.info('Found level %s egg at %s starting at %s',
                          raid['level'], raid['gym_id'],
@@ -229,12 +233,37 @@ def schedule_teleports(delay):
     continuously_run_scheduler()
 
 
+def load_human_readable_names():
+    global pokemon_names, move_names, team_names
+    with open('en.json') as names_file:
+        names = json.loads(names_file.read())
+
+    # Pokemon ID -> Name
+    pokemon = names.get("pokemon", {})
+    for id_, val in pokemon.items():
+        pokemon_names[int(id_)] = pokemon.get(id_, val)
+
+    # Move ID -> Name
+    moves = names.get("moves", {})
+    for id_, val in moves.items():
+        move_names[int(id_)] = moves.get(id_, val)
+
+    # Team ID -> Name
+    teams = names.get("teams", {})
+    for id_, val in teams.items():
+        team_names[int(id_)] = teams.get(id_, val)
+
+    log.debug('Loaded %s pokémon, %s moves and %s teams',
+              len(pokemon_names), len(move_names), len(team_names))
+
+
 if __name__ == '__main__':
     log.info('Starting PGppServer...')
     locations = get_locations()
     set_current_location()
     schedule_teleports(teleport_delay_minutes)
     seen_raids = load_seen_raids()
+    load_human_readable_names()
     run(host=host, port=port, quiet=True)
 
     log.info('Stopping PGppServer...')
