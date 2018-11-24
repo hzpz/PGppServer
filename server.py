@@ -159,14 +159,15 @@ def get_locations():
     with open(locations_csv_filename, newline='') as locations_file:
         reader = csv.reader(locations_file)
         for row in reader:
-            if len(row) != 2:
+            if len(row) < 2 or len(row) > 3:
                 log.error('Ignoring CSV line with wrong format: %s', row)
                 continue
 
             locations_from_csv.append(
                 {
                     "latitude": row[0],
-                    "longitude": row[1]
+                    "longitude": row[1],
+                    "name": row[2] if len(row) == 3 else 'Unknown'
                 })
 
     if len(locations_from_csv) == 0:
@@ -188,7 +189,8 @@ def change_location():
 def set_current_location():
     global locations, current_location, current_location_index
     current_location = locations[current_location_index]
-    log.info('Current location: %s', current_location)
+    log.info('Current location: %s (%s, %s)',
+             current_location['name'], current_location['latitude'], current_location['longitude'])
 
 
 def continuously_run_scheduler():
