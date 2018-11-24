@@ -24,7 +24,7 @@ seen_raids_filename = 'seen.cache'
 
 logging.basicConfig(
     format='%(asctime)s %(levelname)-5s [%(name)-22.22s] %(message)s',
-    level=logging.DEBUG
+    level=logging.INFO
 )
 log = logging.getLogger('PGppServer')
 
@@ -70,6 +70,7 @@ def data():
 
 
 def publish(raid):
+    log.info('Publishing egg/raid to webhook...')
     send_to_webhook(raid)
     mark_seen(raid)
 
