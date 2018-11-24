@@ -109,6 +109,7 @@ def parse_raid(gym):
 
     raid = {
         "gym_id": gym['gym_id'],
+        "team_id": gym['team'],
         "latitude": gym['latitude'],
         "longitude": gym['longitude'],
         "spawn": raid_spawn.timestamp(),
