@@ -1,3 +1,2 @@
 bottle==0.12.13
 requests==2.20.1
-schedule==0.5.0

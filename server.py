@@ -5,12 +5,12 @@ import json
 import logging
 import os.path
 import requests
-import schedule
-import threading
 import time
 from bottle import post, run, request
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
+
+from repeated_timer import RepeatedTimer
 
 # Configuration
 host = '0.0.0.0'
@@ -198,19 +198,6 @@ def set_current_location():
              current_location['name'], current_location['latitude'], current_location['longitude'])
 
 
-def continuously_run_scheduler():
-    class ScheduleThread(threading.Thread):
-        @classmethod
-        def run(cls):
-            while True:
-                schedule.run_pending()
-                time.sleep(1)
-
-    continuous_thread = ScheduleThread()
-    continuous_thread.setDaemon(True)
-    continuous_thread.start()
-
-
 def load_seen_raids():
     if not os.path.exists(seen_raids_filename):
         return {}
@@ -226,11 +213,6 @@ def save_seen_raids(seen_dict):
     with open(seen_raids_filename, 'w') as seen_file:
         seen_file.write(seen_json)
     log.debug('Saved %s seen raids', len(seen_dict))
-
-
-def schedule_teleports(delay):
-    schedule.every(delay).minutes.do(change_location)
-    continuously_run_scheduler()
 
 
 def load_human_readable_names():
@@ -261,10 +243,11 @@ if __name__ == '__main__':
     log.info('Starting PGppServer...')
     locations = get_locations()
     set_current_location()
-    schedule_teleports(teleport_delay_minutes)
+    teleport_timer = RepeatedTimer(teleport_delay_minutes * 60, change_location)
     seen_raids = load_seen_raids()
     load_human_readable_names()
     run(host=host, port=port, quiet=True)
 
     log.info('Stopping PGppServer...')
+    teleport_timer.stop()
     save_seen_raids(seen_raids)
