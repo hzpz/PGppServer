@@ -4,22 +4,22 @@ import csv
 import json
 import logging
 import os.path
-import requests
 import time
-from bottle import post, run, request
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
+import requests
+from bottle import post, run, request
 
 from repeated_timer import RepeatedTimer
 
 # Configuration
-host = '0.0.0.0'
-port = 7477
-min_raid_level = 3
-webhook_url = 'http://localhost:4000'
-teleport_delay_minutes = 1
-locations_csv_filename = 'locations.csv'
-seen_raids_filename = 'seen.cache'
+HOST = '0.0.0.0'
+PORT = 7477
+MIN_RAID_LEVEL = 3
+WEBHOOK_URL = 'http://localhost:4000'
+TELEPORT_DELAY_MINUTES = 1
+LOCATIONS_CSV_FILENAME = 'locations.csv'
+SEEN_RAIDS_FILENAME = 'seen.cache'
 # /Configuration
 
 logging.basicConfig(
@@ -50,7 +50,7 @@ def loc():
 
 @post('/data')
 def data():
-    pg_data = request.json
+    pg_data = request.json()
     for gym in pg_data['gyms']:
         if has_raid(gym):
             raid = parse_raid(gym)
@@ -80,7 +80,7 @@ def publish(raid):
 
 
 def has_raid(gym):
-    return gym['raidLevel'] >= min_raid_level
+    return gym['raidLevel'] >= MIN_RAID_LEVEL
 
 
 def is_active(raid):
@@ -149,19 +149,19 @@ def parse_timestamp_in_millis(timestamp_in_millis):
 
 
 def send_to_webhook(raid):
-    requests.post(webhook_url, json=[{
+    requests.post(WEBHOOK_URL, json=[{
         "type": "raid",
         "message": raid
     }])
 
 
 def get_locations():
-    if not os.path.exists(locations_csv_filename):
-        log.error('Unable to find CSV file with locations: %s', locations_csv_filename)
+    if not os.path.exists(LOCATIONS_CSV_FILENAME):
+        log.error('Unable to find CSV file with locations: %s', LOCATIONS_CSV_FILENAME)
         sys.exit(1)
 
     locations_from_csv = []
-    with open(locations_csv_filename, newline='') as locations_file:
+    with open(LOCATIONS_CSV_FILENAME, newline='') as locations_file:
         reader = csv.reader(locations_file)
         for row in reader:
             if len(row) < 2 or len(row) > 3:
@@ -175,8 +175,8 @@ def get_locations():
                     "name": row[2] if len(row) == 3 else 'Unknown'
                 })
 
-    if len(locations_from_csv) == 0:
-        log.error('CSV file with locations was empty or invalid: %s', locations_csv_filename)
+    if not locations_from_csv:
+        log.error('CSV file with locations was empty or invalid: %s', LOCATIONS_CSV_FILENAME)
         sys.exit(1)
 
     log.info('Read %s location(s) from CSV file', len(locations_from_csv))
@@ -199,10 +199,10 @@ def set_current_location():
 
 
 def load_seen_raids():
-    if not os.path.exists(seen_raids_filename):
+    if not os.path.exists(SEEN_RAIDS_FILENAME):
         return {}
 
-    with open(seen_raids_filename) as seen_file:
+    with open(SEEN_RAIDS_FILENAME) as seen_file:
         seen_json = json.loads(seen_file.read())
         log.debug('Loaded %s seen raids', len(seen_json))
         return seen_json
@@ -210,7 +210,7 @@ def load_seen_raids():
 
 def save_seen_raids(seen_dict):
     seen_json = json.dumps(seen_dict, indent=1)
-    with open(seen_raids_filename, 'w') as seen_file:
+    with open(SEEN_RAIDS_FILENAME, 'w') as seen_file:
         seen_file.write(seen_json)
     log.debug('Saved %s seen raids', len(seen_dict))
 
@@ -243,10 +243,10 @@ if __name__ == '__main__':
     log.info('Starting PGppServer...')
     locations = get_locations()
     set_current_location()
-    teleport_timer = RepeatedTimer(teleport_delay_minutes * 60, change_location)
+    teleport_timer = RepeatedTimer(TELEPORT_DELAY_MINUTES * 60, change_location)
     seen_raids = load_seen_raids()
     load_human_readable_names()
-    run(host=host, port=port, quiet=True)
+    run(host=HOST, port=PORT, quiet=True)
 
     log.info('Stopping PGppServer...')
     teleport_timer.stop()
