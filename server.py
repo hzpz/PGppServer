@@ -5,7 +5,8 @@ import json
 import logging
 import os.path
 import time
-from concurrent.futures import ThreadPoolExecutor
+from queue import Queue
+from threading import Thread
 from datetime import datetime
 import requests
 from bottle import post, run, request
@@ -32,7 +33,7 @@ seen_raids = {}
 locations = []
 current_location = {}
 current_location_index = 0
-executor = ThreadPoolExecutor(max_workers=2)
+publish_queue = Queue()
 pokemon_names = {}
 move_names = {}
 team_names = {}
@@ -70,13 +71,25 @@ def data():
                          raid['level'], raid['gym_id'],
                          datetime.fromtimestamp(raid['start']).strftime('%H:%M'))
 
-            executor.submit(publish, raid)
+            enqueue(raid)
 
 
-def publish(raid):
-    log.info('Publishing egg/raid to webhook...')
-    send_to_webhook(raid)
-    mark_seen(raid)
+def enqueue(raid):
+    global publish_queue
+    publish_queue.put(raid)
+
+
+def publish_raids():
+    global publish_queue
+    while True:
+        raid = publish_queue.get()
+        if not raid:
+            break
+        if seen(raid):
+            continue
+        log.info('Publishing egg/raid to webhook...')
+        send_to_webhook(raid)
+        mark_seen(raid)
 
 
 def has_raid(gym):
@@ -244,10 +257,13 @@ if __name__ == '__main__':
     locations = get_locations()
     set_current_location()
     teleport_timer = RepeatedTimer(TELEPORT_DELAY_MINUTES * 60, change_location)
+    publish_thread = Thread(target=publish_raids)
+    publish_thread.start()
     seen_raids = load_seen_raids()
     load_human_readable_names()
     run(host=HOST, port=PORT, quiet=True)
 
     log.info('Stopping PGppServer...')
     teleport_timer.stop()
+    publish_queue.put(None)
     save_seen_raids(seen_raids)
