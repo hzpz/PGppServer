@@ -50,7 +50,7 @@ def loc():
 
 @post('/data')
 def data():
-    pg_data = request.json()
+    pg_data = request.json
     for gym in pg_data['gyms']:
         if has_raid(gym):
             raid = parse_raid(gym)
