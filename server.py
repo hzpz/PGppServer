@@ -86,10 +86,12 @@ def publish_raids():
         if not raid:
             break
         if seen(raid):
+            log.debug('Already published raid at %s', raid['gym_id'])
             continue
         log.info('Publishing egg/raid to webhook...')
         send_to_webhook(raid)
         mark_seen(raid)
+        publish_queue.task_done()
 
 
 def has_raid(gym):
