@@ -52,7 +52,7 @@ def loc():
 @post('/data')
 def data():
     pg_data = request.json
-    for gym in pg_data['gyms']:
+    for gym in pg_data.get('gyms') or []:
         if has_raid(gym):
             raid = parse_raid(gym)
             log.debug('Raw raid: %s', raid)
