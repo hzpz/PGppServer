@@ -24,7 +24,7 @@ SEEN_RAIDS_FILENAME = 'seen.cache'
 # /Configuration
 
 logging.basicConfig(
-    format='%(asctime)s %(levelname)-5s [%(name)-22.22s] %(message)s',
+    format='%(asctime)s %(levelname)-7s [%(name)-10.10s] %(message)s',
     level=logging.INFO
 )
 log = logging.getLogger('PGppServer')
@@ -86,9 +86,9 @@ def publish_raids():
         if not raid:
             break
         if seen(raid):
-            log.debug('Already published raid at %s', raid['gym_id'])
+            log.warn('Already published raid at %s', raid['gym_id'])
             continue
-        log.info('Publishing egg/raid to webhook...')
+        log.debug('Publishing egg/raid to webhook...')
         send_to_webhook(raid)
         mark_seen(raid)
         publish_queue.task_done()
