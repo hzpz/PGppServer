@@ -1,17 +1,17 @@
 import sys
+import time
 
 import csv
 import json
 import logging
 import os.path
-import time
 from queue import Queue
 from threading import Thread
 from datetime import datetime
 import requests
-from bottle import post, run, request
+from bottle import post, run, request, response
 
-from repeated_timer import RepeatedTimer
+from location_provider import LocationProvider, SizeExceededError
 
 # Configuration
 HOST = '0.0.0.0'
@@ -30,9 +30,7 @@ logging.basicConfig(
 log = logging.getLogger('PGppServer')
 
 seen_raids = {}
-locations = []
-current_location = {}
-current_location_index = 0
+location_provider = None
 publish_queue = Queue()
 pokemon_names = {}
 move_names = {}
@@ -41,16 +39,31 @@ team_names = {}
 
 @post('/loc')
 def loc():
+    global location_provider
+    loc_data = request.json
+    device_uuid = loc_data.get('uuid')
+    try:
+        location = location_provider[device_uuid]
+    except SizeExceededError:
+        error_message = '"%s" exceeds device limit, already got: %s' % device_uuid, list(
+            location_provider.keys())
+        log.error(error_message)
+        response.status = 400
+        return {
+            "error": error_message
+        }
+
     return {
-        "lat": current_location['latitude'],
-        "lng": current_location['longitude'],
-        "latitude": current_location['latitude'],
-        "longitude": current_location['longitude']
+        "lat": location['latitude'],
+        "lng": location['longitude'],
+        "latitude": location['latitude'],
+        "longitude": location['longitude']
     }
 
 
 @post('/data')
 def data():
+    global pokemon_names, move_names
     pg_data = request.json
     for gym in pg_data.get('gyms') or []:
         if has_raid(gym):
@@ -86,7 +99,7 @@ def publish_raids():
         if not raid:
             break
         if seen(raid):
-            log.warn('Already published raid at %s', raid['gym_id'])
+            log.warning('Already published raid at %s', raid['gym_id'])
             continue
         log.debug('Publishing egg/raid to webhook...')
         send_to_webhook(raid)
@@ -198,21 +211,6 @@ def get_locations():
     return locations_from_csv
 
 
-def change_location():
-    global locations, current_location_index
-    current_location_index += 1
-    if current_location_index >= len(locations):
-        current_location_index = 0
-    set_current_location()
-
-
-def set_current_location():
-    global locations, current_location, current_location_index
-    current_location = locations[current_location_index]
-    log.info('Current location: %s (%s, %s)',
-             current_location['name'], current_location['latitude'], current_location['longitude'])
-
-
 def load_seen_raids():
     if not os.path.exists(SEEN_RAIDS_FILENAME):
         return {}
@@ -257,8 +255,7 @@ def load_human_readable_names():
 if __name__ == '__main__':
     log.info('Starting PGppServer...')
     locations = get_locations()
-    set_current_location()
-    teleport_timer = RepeatedTimer(TELEPORT_DELAY_MINUTES * 60, change_location)
+    location_provider = LocationProvider(locations, TELEPORT_DELAY_MINUTES * 60)
     publish_thread = Thread(target=publish_raids)
     publish_thread.start()
     seen_raids = load_seen_raids()
@@ -266,6 +263,5 @@ if __name__ == '__main__':
     run(host=HOST, port=PORT, quiet=True)
 
     log.info('Stopping PGppServer...')
-    teleport_timer.stop()
     publish_queue.put(None)
     save_seen_raids(seen_raids)
