@@ -65,7 +65,7 @@ def loc():
 def data():
     global pokemon_names, move_names
     pg_data = request.json
-    for gym in pg_data.get('gyms') or []:
+    for gym in get_unique_gyms(pg_data):
         if has_raid(gym):
             raid = parse_raid(gym)
             log.debug('Raw raid: %s', raid)
@@ -85,6 +85,14 @@ def data():
                          datetime.fromtimestamp(raid['start']).strftime('%H:%M'))
 
             enqueue(raid)
+
+
+def get_unique_gyms(pg_data):
+    gyms = pg_data.get('gyms') or []
+    unique_gyms = list({gym['gym_id']: gym for gym in gyms}.values())
+    if len(gyms) != len(unique_gyms):
+        log.warning('Received %s duplicate gym(s)', len(gyms) - len(unique_gyms))
+    return unique_gyms
 
 
 def enqueue(raid):
