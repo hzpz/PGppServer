@@ -14,9 +14,9 @@ from bottle import post, run, request, response
 from location_provider import LocationProvider, SizeExceededError
 
 # Configuration
-HOST = '0.0.0.0'
+HOST = 'localhost'
 PORT = 7477
-MIN_RAID_LEVEL = 3
+MIN_RAID_LEVEL = 1
 WEBHOOK_URL = 'http://localhost:4000'
 TELEPORT_DELAY_MINUTES = 1
 LOCATIONS_CSV_FILENAME = 'locations.csv'
