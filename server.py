@@ -91,7 +91,7 @@ def get_unique_gyms(pg_data):
     gyms = pg_data.get('gyms') or []
     unique_gyms = list({gym['gym_id']: gym for gym in gyms}.values())
     if len(gyms) != len(unique_gyms):
-        log.warning('Received %s duplicate gym(s)', len(gyms) - len(unique_gyms))
+        log.debug('Received %s duplicate gym(s)', len(gyms) - len(unique_gyms))
     return unique_gyms
 
 
