@@ -41,17 +41,18 @@ team_names = {}
 def loc():
     global location_provider
     loc_data = request.json
+
+    if not loc_data:
+        log.error('Body was empty or invalid: %s', request.body.read())
+        return http_400('Body was empty or invalid')
+
     device_uuid = loc_data.get('uuid')
     try:
         location = location_provider[device_uuid]
     except SizeExceededError:
-        error_message = '"%s" exceeds device limit, already got: %s' % device_uuid, list(
-            location_provider.keys())
-        log.error(error_message)
-        response.status = 400
-        return {
-            "error": error_message
-        }
+        log.error('"%s" exceeds device limit, already got: %s',
+                  device_uuid, list(location_provider.keys()))
+        return http_400('Exceeded device limit')
 
     return {
         "lat": location['latitude'],
@@ -65,6 +66,11 @@ def loc():
 def data():
     global pokemon_names, move_names
     pg_data = request.json
+
+    if not pg_data:
+        log.error('Body was empty or invalid: %s', request.body.read())
+        return http_400('Body was empty or invalid')
+
     for gym in get_unique_gyms(pg_data):
         if has_raid(gym):
             raid = parse_raid(gym)
@@ -85,6 +91,13 @@ def data():
                          datetime.fromtimestamp(raid['start']).strftime('%H:%M'))
 
             enqueue(raid)
+
+
+def http_400(error_message):
+    response.status = 400
+    return {
+        "error": error_message
+    }
 
 
 def get_unique_gyms(pg_data):
