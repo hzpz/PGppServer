@@ -1,6 +1,7 @@
 import sys
 import time
 
+import base64
 import csv
 import json
 import logging
@@ -12,6 +13,8 @@ import requests
 from bottle import post, run, request, response
 
 from location_provider import LocationProvider, SizeExceededError
+from pogoprotos.map.fort.fort_type_pb2 import FortType
+from pogoprotos.networking.responses.get_map_objects_response_pb2 import GetMapObjectsResponse
 
 # Configuration
 HOST = 'localhost'
@@ -101,11 +104,65 @@ def http_400(error_message):
 
 
 def get_unique_gyms(pg_data):
-    gyms = pg_data.get('gyms') or []
-    unique_gyms = list({gym['gym_id']: gym for gym in gyms}.values())
-    if len(gyms) != len(unique_gyms):
-        log.debug('Received %s duplicate gym(s)', len(gyms) - len(unique_gyms))
-    return unique_gyms
+    if 'gym' in pg_data:
+        gyms = pg_data.get('gyms')
+        unique_gyms = list({gym['gym_id']: gym for gym in gyms}.values())
+        if len(gyms) != len(unique_gyms):
+            log.debug('Received %s duplicate gym(s)', len(gyms) - len(unique_gyms))
+        return unique_gyms
+    elif 'protos' in pg_data:
+        protos = pg_data.get('protos')
+        gyms = []
+        for proto in protos:
+            if 'GetMapObjects' in proto:
+                gmoString = proto.get('GetMapObjects')
+                gmo = GetMapObjectsResponse()
+                gmo.ParseFromString(base64.b64decode(gmoString))
+                for map_cell in gmo.map_cells:
+                    for fort in map_cell.forts:
+                        if fort.type is not FortType.Value('GYM'):
+                            continue
+
+                        gyms.append(parse_fort(fort))
+        return gyms
+    else:
+        return []
+
+
+def parse_fort(fort):
+    gym = {
+        'gym_id': fort.id,
+        'team': fort.owned_by_team,
+        'latitude': fort.latitude,
+        'longitude': fort.longitude,
+        'raidLevel': 0,
+        'raidSpawnMs': 0,
+        'raidBattleMs': 0,
+        'raidEndMs': 0,
+        'raidPokemon': 0,
+        'cp': 0,
+        'move1': 0,
+        'move2': 0
+    }
+
+    if fort.raid_info:
+        raid_info = fort.raid_info
+        gym.update({
+            'raidLevel': raid_info.raid_level,
+            'raidSpawnMs': raid_info.raid_spawn_ms,
+            'raidBattleMs': raid_info.raid_battle_ms,
+            'raidEndMs': raid_info.raid_end_ms
+        })
+
+        if raid_info.raid_pokemon:
+            raid_pokemon = raid_info.raid_pokemon
+            gym.update({
+                'raidPokemon': raid_pokemon.pokemon_id,
+                'cp': raid_pokemon.cp,
+                'move1': raid_pokemon.move_1,
+                'move2': raid_pokemon.move_2
+            })
+    return gym
 
 
 def enqueue(raid):
