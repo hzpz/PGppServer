@@ -12,6 +12,8 @@ import requests
 from bottle import post, run, request, response
 
 from location_provider import LocationProvider, SizeExceededError
+from pogoprotos.enums.pokemon_id_pb2 import PokemonId
+from pogoprotos.enums.pokemon_move_pb2 import PokemonMove
 from pogoprotos.map.fort.fort_type_pb2 import FortType
 from pogoprotos.networking.responses.get_map_objects_response_pb2 import GetMapObjectsResponse
 
@@ -34,9 +36,6 @@ log = logging.getLogger('PGppServer')
 seen_raids = {}
 location_provider = None
 publish_queue = Queue()
-pokemon_names = {}
-move_names = {}
-team_names = {}
 
 
 @post('/loc')
@@ -66,7 +65,6 @@ def loc():
 
 @post('/data')
 def data():
-    global pokemon_names, move_names
     pg_data = request.json
 
     if not pg_data:
@@ -84,8 +82,8 @@ def data():
 
             if raid['pokemon_id']:
                 log.info('Found %s raid (%s/%s) at %s running until %s',
-                         pokemon_names[raid['pokemon_id']],
-                         move_names[raid['move_1']], move_names[raid['move_2']],
+                         PokemonId.Name(raid['pokemon_id']),
+                         PokemonMove.Name(raid['move_1']), PokemonMove.Name(raid['move_2']),
                          raid['gym_id'], datetime.fromtimestamp(raid['end']).strftime('%H:%M'))
             else:
                 log.info('Found level %s egg at %s starting at %s',
@@ -278,30 +276,6 @@ def save_seen_raids(seen_dict):
     log.debug('Saved %s seen raids', len(seen_dict))
 
 
-def load_human_readable_names():
-    global pokemon_names, move_names, team_names
-    with open('en.json') as names_file:
-        names = json.loads(names_file.read())
-
-    # Pokemon ID -> Name
-    pokemon = names.get("pokemon", {})
-    for id_, val in pokemon.items():
-        pokemon_names[int(id_)] = pokemon.get(id_, val)
-
-    # Move ID -> Name
-    moves = names.get("moves", {})
-    for id_, val in moves.items():
-        move_names[int(id_)] = moves.get(id_, val)
-
-    # Team ID -> Name
-    teams = names.get("teams", {})
-    for id_, val in teams.items():
-        team_names[int(id_)] = teams.get(id_, val)
-
-    log.debug('Loaded %s pokémon, %s moves and %s teams',
-              len(pokemon_names), len(move_names), len(team_names))
-
-
 if __name__ == '__main__':
     log.info('Starting PGppServer...')
     try:
@@ -309,7 +283,6 @@ if __name__ == '__main__':
         publish_thread = Thread(target=publish_raids)
         publish_thread.start()
         seen_raids = load_seen_raids()
-        load_human_readable_names()
     except Exception as e:
         log.error('%s', e)
         sys.exit(1)
