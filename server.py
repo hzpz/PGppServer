@@ -2,7 +2,6 @@ import sys
 import time
 
 import base64
-import csv
 import json
 import logging
 import os.path
@@ -114,6 +113,7 @@ def get_unique_gyms(pg_data):
         protos = pg_data.get('protos')
         gyms = []
         for proto in protos:
+            log.debug('Raw proto: %s', proto)
             if 'GetMapObjects' in proto:
                 gmoString = proto.get('GetMapObjects')
                 gmo = GetMapObjectsResponse()
@@ -261,34 +261,6 @@ def send_to_webhook(raid):
     }])
 
 
-def get_locations():
-    if not os.path.exists(LOCATIONS_CSV_FILENAME):
-        log.error('Unable to find CSV file with locations: %s', LOCATIONS_CSV_FILENAME)
-        sys.exit(1)
-
-    locations_from_csv = []
-    with open(LOCATIONS_CSV_FILENAME, newline='') as locations_file:
-        reader = csv.reader(locations_file)
-        for row in reader:
-            if len(row) < 2 or len(row) > 3:
-                log.error('Ignoring CSV line with wrong format: %s', row)
-                continue
-
-            locations_from_csv.append(
-                {
-                    "latitude": row[0],
-                    "longitude": row[1],
-                    "name": row[2] if len(row) == 3 else 'Unknown'
-                })
-
-    if not locations_from_csv:
-        log.error('CSV file with locations was empty or invalid: %s', LOCATIONS_CSV_FILENAME)
-        sys.exit(1)
-
-    log.info('Read %s location(s) from CSV file', len(locations_from_csv))
-    return locations_from_csv
-
-
 def load_seen_raids():
     if not os.path.exists(SEEN_RAIDS_FILENAME):
         return {}
@@ -332,12 +304,16 @@ def load_human_readable_names():
 
 if __name__ == '__main__':
     log.info('Starting PGppServer...')
-    locations = get_locations()
-    location_provider = LocationProvider(locations, TELEPORT_DELAY_MINUTES * 60)
-    publish_thread = Thread(target=publish_raids)
-    publish_thread.start()
-    seen_raids = load_seen_raids()
-    load_human_readable_names()
+    try:
+        location_provider = LocationProvider(LOCATIONS_CSV_FILENAME, TELEPORT_DELAY_MINUTES * 60)
+        publish_thread = Thread(target=publish_raids)
+        publish_thread.start()
+        seen_raids = load_seen_raids()
+        load_human_readable_names()
+    except Exception as e:
+        log.error('%s', e)
+        sys.exit(1)
+
     run(host=HOST, port=PORT, quiet=True)
 
     log.info('Stopping PGppServer...')
