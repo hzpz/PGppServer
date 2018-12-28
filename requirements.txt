@@ -1,4 +1,4 @@
-bottle==0.12.15
-requests==2.20.1
+bottle==0.12.16
+requests==2.21.0
 cachetools==3.0.0
 protobuf==3.6.1
