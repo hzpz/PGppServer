@@ -73,21 +73,22 @@ def data():
 
     for gym in get_unique_gyms(pg_data):
         if has_raid(gym):
+            device_uuid = pg_data.get('uuid')
             raid = parse_raid(gym)
-            log.debug('Raw raid: %s', raid)
+            log.debug('(%s) Raw raid: %s', device_uuid, raid)
 
             if seen(raid):
-                log.debug('Already seen raid at %s', raid['gym_id'])
+                log.debug('(%s) Already seen raid at %s', device_uuid, raid['gym_id'])
                 continue
 
             if raid['pokemon_id']:
-                log.info('Found %s raid (%s/%s) at %s running until %s',
-                         PokemonId.Name(raid['pokemon_id']),
+                log.info('(%s) Found %s raid (%s/%s) at %s running until %s',
+                         device_uuid, PokemonId.Name(raid['pokemon_id']),
                          PokemonMove.Name(raid['move_1']), PokemonMove.Name(raid['move_2']),
                          raid['gym_id'], datetime.fromtimestamp(raid['end']).strftime('%H:%M'))
             else:
-                log.info('Found level %s egg at %s starting at %s',
-                         raid['level'], raid['gym_id'],
+                log.info('(%s) Found level %s egg at %s starting at %s',
+                         device_uuid, raid['level'], raid['gym_id'],
                          datetime.fromtimestamp(raid['start']).strftime('%H:%M'))
 
             enqueue(raid)
@@ -101,17 +102,22 @@ def http_400(error_message):
 
 
 def get_unique_gyms(pg_data):
+    gyms = get_gyms(pg_data)
+    unique_gyms = list({gym['gym_id']: gym for gym in gyms}.values())
+    if len(gyms) != len(unique_gyms):
+        duplicate_gym_count = len(gyms) - len(unique_gyms)
+        log.debug('(%s) Received %s duplicate gym(s)', pg_data.get('uuid'), duplicate_gym_count)
+    return unique_gyms
+
+
+def get_gyms(pg_data):
     if 'gym' in pg_data:
-        gyms = pg_data.get('gyms')
-        unique_gyms = list({gym['gym_id']: gym for gym in gyms}.values())
-        if len(gyms) != len(unique_gyms):
-            log.debug('Received %s duplicate gym(s)', len(gyms) - len(unique_gyms))
-        return unique_gyms
+        return pg_data.get('gyms')
     elif 'protos' in pg_data:
         protos = pg_data.get('protos')
         gyms = []
         for proto in protos:
-            log.debug('Raw proto: %s', proto)
+            log.debug('(%s) Raw proto: %s', pg_data.get('uuid'), proto)
             if 'GetMapObjects' in proto:
                 gmoString = proto.get('GetMapObjects')
                 gmo = GetMapObjectsResponse()
@@ -120,7 +126,6 @@ def get_unique_gyms(pg_data):
                     for fort in map_cell.forts:
                         if fort.type is not FortType.Value('GYM'):
                             continue
-
                         gyms.append(parse_fort(fort))
         return gyms
     else:
@@ -177,7 +182,7 @@ def publish_raids():
         if seen(raid):
             log.warning('Already published raid at %s', raid['gym_id'])
             continue
-        log.debug('Publishing egg/raid to webhook...')
+        log.debug('Publishing egg/raid at %s to webhook...', raid['gym_id'])
         send_to_webhook(raid)
         mark_seen(raid)
         publish_queue.task_done()
