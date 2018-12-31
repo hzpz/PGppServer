@@ -13,14 +13,15 @@ pip install -r requirements.txt
 ```
 
 ## Configuration
-See `server.py`:
-* `host`: IP to bind to, use '0.0.0.0' for all interfaces
-* `port`: port to listen on
-* `min_raid_level`: minimum raid level to publish to webhook
-* `webhook_url`: URL of webhook, e.g. 'http://localhost:4000'
-* `teleport_delay_minutes`: time in minutes between teleports
-* `locations_csv_filename`: name of the CSV file with locations, see below for details
-* `seen_raids_filename`: file for cache of seen raids
+See `config.py`:
+* `HOST`: IP to bind to, use '0.0.0.0' for all interfaces
+* `PORT`: port to listen on
+* `MIN_RAID_LEVEL`: minimum raid level to publish to webhook
+* `WEBHOOK_URL`: URL of webhook, e.g. 'http://localhost:4000'
+* `TELEPORT_DELAY_MINUTES`: time in minutes between teleports
+* `LOCATIONS_CSV_FILENAME`: name of the CSV file with locations, see below for details
+* `SEEN_RAIDS_FILENAME`: file for cache of seen raids
+* `LOG_LEVEL`: logging verbosity
 
 ### Locations CSV
 Format: `latitude,longitude,name`, e.g. `52.2780709,7.9853899,Osnabrück`. `name` is optional.

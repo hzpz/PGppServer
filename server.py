@@ -11,25 +11,16 @@ from datetime import datetime
 import requests
 from bottle import post, run, request, response
 
+import config
 from location_provider import LocationProvider, SizeExceededError
 from pogoprotos.enums.pokemon_id_pb2 import PokemonId
 from pogoprotos.enums.pokemon_move_pb2 import PokemonMove
 from pogoprotos.map.fort.fort_type_pb2 import FortType
 from pogoprotos.networking.responses.get_map_objects_response_pb2 import GetMapObjectsResponse
 
-# Configuration
-HOST = 'localhost'
-PORT = 7477
-MIN_RAID_LEVEL = 1
-WEBHOOK_URL = 'http://localhost:4000'
-TELEPORT_DELAY_MINUTES = 1
-LOCATIONS_CSV_FILENAME = 'locations.csv'
-SEEN_RAIDS_FILENAME = 'seen.cache'
-# /Configuration
-
 logging.basicConfig(
     format='%(asctime)s %(levelname)-7s [%(name)-10.10s] %(message)s',
-    level=logging.INFO
+    level=config.LOG_LEVEL
 )
 log = logging.getLogger('PGppServer')
 
@@ -189,7 +180,7 @@ def publish_raids():
 
 
 def has_raid(gym):
-    return gym['raidLevel'] >= MIN_RAID_LEVEL
+    return gym['raidLevel'] >= config.MIN_RAID_LEVEL
 
 
 def is_active(raid):
@@ -258,17 +249,17 @@ def parse_timestamp_in_millis(timestamp_in_millis):
 
 
 def send_to_webhook(raid):
-    requests.post(WEBHOOK_URL, json=[{
+    requests.post(config.WEBHOOK_URL, json=[{
         "type": "raid",
         "message": raid
     }])
 
 
 def load_seen_raids():
-    if not os.path.exists(SEEN_RAIDS_FILENAME):
+    if not os.path.exists(config.SEEN_RAIDS_FILENAME):
         return {}
 
-    with open(SEEN_RAIDS_FILENAME) as seen_file:
+    with open(config.SEEN_RAIDS_FILENAME) as seen_file:
         seen_json = json.loads(seen_file.read())
         log.debug('Loaded %s seen raids', len(seen_json))
         return seen_json
@@ -276,7 +267,7 @@ def load_seen_raids():
 
 def save_seen_raids(seen_dict):
     seen_json = json.dumps(seen_dict, indent=1)
-    with open(SEEN_RAIDS_FILENAME, 'w') as seen_file:
+    with open(config.SEEN_RAIDS_FILENAME, 'w') as seen_file:
         seen_file.write(seen_json)
     log.debug('Saved %s seen raids', len(seen_dict))
 
@@ -284,7 +275,8 @@ def save_seen_raids(seen_dict):
 if __name__ == '__main__':
     log.info('Starting PGppServer...')
     try:
-        location_provider = LocationProvider(LOCATIONS_CSV_FILENAME, TELEPORT_DELAY_MINUTES * 60)
+        location_provider = LocationProvider(config.LOCATIONS_CSV_FILENAME,
+                                             config.TELEPORT_DELAY_MINUTES * 60)
         publish_thread = Thread(target=publish_raids)
         publish_thread.start()
         seen_raids = load_seen_raids()
@@ -292,7 +284,7 @@ if __name__ == '__main__':
         log.error('%s', e)
         sys.exit(1)
 
-    run(host=HOST, port=PORT, quiet=True)
+    run(host=config.HOST, port=config.PORT, quiet=True)
 
     log.info('Stopping PGppServer...')
     publish_queue.put(None)
