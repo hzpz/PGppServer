@@ -22,7 +22,7 @@ class LocationProvider(TTLCache):
         location = self.locations.next()
         self[key] = location
         self.lock.release()
-        log.info('Current location for "%s": %s (%s, %s)',
+        log.info('(%s) Current location: %s (%s, %s)',
                  key, location['name'], location['latitude'], location['longitude'])
         return location
 
