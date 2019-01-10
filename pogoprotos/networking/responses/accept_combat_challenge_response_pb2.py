@@ -20,15 +20,15 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.networking.responses',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\nFpogoprotos/networking/responses/accept_combat_challenge_response.proto\x12\x1fpogoprotos.networking.responses\x1a-pogoprotos/data/combat/combat_challenge.proto\"\xf3\x03\n\x1d\x43reateCombatChallengeResponse\x12U\n\x06result\x18\x01 \x01(\x0e\x32\x45.pogoprotos.networking.responses.CreateCombatChallengeResponse.Result\x12:\n\tchallenge\x18\x02 \x01(\x0b\x32\'.pogoprotos.data.combat.CombatChallenge\"\xbe\x02\n\x06Result\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12!\n\x1d\x45RROR_INVALID_CHALLENGE_STATE\x10\x02\x12\x1d\n\x19\x45RROR_CHALLENGE_NOT_FOUND\x10\x03\x12\"\n\x1e\x45RROR_POKEMON_NOT_IN_INVENTORY\x10\x04\x12\x1d\n\x19\x45RROR_NOT_ELIGIBLE_LEAGUE\x10\x05\x12$\n ERROR_PLAYER_BELOW_MINIMUM_LEVEL\x10\x06\x12\x1f\n\x1b\x45RROR_OPPONENT_NOT_IN_RANGE\x10\x07\x12\x1a\n\x16\x45RROR_ALREADY_TIMEDOUT\x10\x08\x12\x1b\n\x17\x45RROR_ALREADY_CANCELLED\x10\t\x12\x17\n\x13\x45RROR_ACCESS_DENIED\x10\nb\x06proto3')
+  serialized_pb=_b('\nFpogoprotos/networking/responses/accept_combat_challenge_response.proto\x12\x1fpogoprotos.networking.responses\x1a-pogoprotos/data/combat/combat_challenge.proto\"\xf3\x03\n\x1d\x41\x63\x63\x65ptCombatChallengeResponse\x12U\n\x06result\x18\x01 \x01(\x0e\x32\x45.pogoprotos.networking.responses.AcceptCombatChallengeResponse.Result\x12:\n\tchallenge\x18\x02 \x01(\x0b\x32\'.pogoprotos.data.combat.CombatChallenge\"\xbe\x02\n\x06Result\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12!\n\x1d\x45RROR_INVALID_CHALLENGE_STATE\x10\x02\x12\x1d\n\x19\x45RROR_CHALLENGE_NOT_FOUND\x10\x03\x12\"\n\x1e\x45RROR_POKEMON_NOT_IN_INVENTORY\x10\x04\x12\x1d\n\x19\x45RROR_NOT_ELIGIBLE_LEAGUE\x10\x05\x12$\n ERROR_PLAYER_BELOW_MINIMUM_LEVEL\x10\x06\x12\x1f\n\x1b\x45RROR_OPPONENT_NOT_IN_RANGE\x10\x07\x12\x1a\n\x16\x45RROR_ALREADY_TIMEDOUT\x10\x08\x12\x1b\n\x17\x45RROR_ALREADY_CANCELLED\x10\t\x12\x17\n\x13\x45RROR_ACCESS_DENIED\x10\nb\x06proto3')
   ,
   dependencies=[pogoprotos_dot_data_dot_combat_dot_combat__challenge__pb2.DESCRIPTOR,])
 
 
 
-_CREATECOMBATCHALLENGERESPONSE_RESULT = _descriptor.EnumDescriptor(
+_ACCEPTCOMBATCHALLENGERESPONSE_RESULT = _descriptor.EnumDescriptor(
   name='Result',
-  full_name='pogoprotos.networking.responses.CreateCombatChallengeResponse.Result',
+  full_name='pogoprotos.networking.responses.AcceptCombatChallengeResponse.Result',
   filename=None,
   file=DESCRIPTOR,
   values=[
@@ -82,25 +82,25 @@ _CREATECOMBATCHALLENGERESPONSE_RESULT = _descriptor.EnumDescriptor(
   serialized_start=336,
   serialized_end=654,
 )
-_sym_db.RegisterEnumDescriptor(_CREATECOMBATCHALLENGERESPONSE_RESULT)
+_sym_db.RegisterEnumDescriptor(_ACCEPTCOMBATCHALLENGERESPONSE_RESULT)
 
 
-_CREATECOMBATCHALLENGERESPONSE = _descriptor.Descriptor(
-  name='CreateCombatChallengeResponse',
-  full_name='pogoprotos.networking.responses.CreateCombatChallengeResponse',
+_ACCEPTCOMBATCHALLENGERESPONSE = _descriptor.Descriptor(
+  name='AcceptCombatChallengeResponse',
+  full_name='pogoprotos.networking.responses.AcceptCombatChallengeResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='result', full_name='pogoprotos.networking.responses.CreateCombatChallengeResponse.result', index=0,
+      name='result', full_name='pogoprotos.networking.responses.AcceptCombatChallengeResponse.result', index=0,
       number=1, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='challenge', full_name='pogoprotos.networking.responses.CreateCombatChallengeResponse.challenge', index=1,
+      name='challenge', full_name='pogoprotos.networking.responses.AcceptCombatChallengeResponse.challenge', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -111,7 +111,7 @@ _CREATECOMBATCHALLENGERESPONSE = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
-    _CREATECOMBATCHALLENGERESPONSE_RESULT,
+    _ACCEPTCOMBATCHALLENGERESPONSE_RESULT,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -123,18 +123,18 @@ _CREATECOMBATCHALLENGERESPONSE = _descriptor.Descriptor(
   serialized_end=654,
 )
 
-_CREATECOMBATCHALLENGERESPONSE.fields_by_name['result'].enum_type = _CREATECOMBATCHALLENGERESPONSE_RESULT
-_CREATECOMBATCHALLENGERESPONSE.fields_by_name['challenge'].message_type = pogoprotos_dot_data_dot_combat_dot_combat__challenge__pb2._COMBATCHALLENGE
-_CREATECOMBATCHALLENGERESPONSE_RESULT.containing_type = _CREATECOMBATCHALLENGERESPONSE
-DESCRIPTOR.message_types_by_name['CreateCombatChallengeResponse'] = _CREATECOMBATCHALLENGERESPONSE
+_ACCEPTCOMBATCHALLENGERESPONSE.fields_by_name['result'].enum_type = _ACCEPTCOMBATCHALLENGERESPONSE_RESULT
+_ACCEPTCOMBATCHALLENGERESPONSE.fields_by_name['challenge'].message_type = pogoprotos_dot_data_dot_combat_dot_combat__challenge__pb2._COMBATCHALLENGE
+_ACCEPTCOMBATCHALLENGERESPONSE_RESULT.containing_type = _ACCEPTCOMBATCHALLENGERESPONSE
+DESCRIPTOR.message_types_by_name['AcceptCombatChallengeResponse'] = _ACCEPTCOMBATCHALLENGERESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-CreateCombatChallengeResponse = _reflection.GeneratedProtocolMessageType('CreateCombatChallengeResponse', (_message.Message,), dict(
-  DESCRIPTOR = _CREATECOMBATCHALLENGERESPONSE,
+AcceptCombatChallengeResponse = _reflection.GeneratedProtocolMessageType('AcceptCombatChallengeResponse', (_message.Message,), dict(
+  DESCRIPTOR = _ACCEPTCOMBATCHALLENGERESPONSE,
   __module__ = 'pogoprotos.networking.responses.accept_combat_challenge_response_pb2'
-  # @@protoc_insertion_point(class_scope:pogoprotos.networking.responses.CreateCombatChallengeResponse)
+  # @@protoc_insertion_point(class_scope:pogoprotos.networking.responses.AcceptCombatChallengeResponse)
   ))
-_sym_db.RegisterMessage(CreateCombatChallengeResponse)
+_sym_db.RegisterMessage(AcceptCombatChallengeResponse)
 
 
 # @@protoc_insertion_point(module_scope)

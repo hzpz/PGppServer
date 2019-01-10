@@ -13,6 +13,8 @@ _sym_db = _symbol_database.Default()
 
 
 from pogoprotos.data import pokemon_display_pb2 as pogoprotos_dot_data_dot_pokemon__display__pb2
+from pogoprotos.enums import pokemon_move_pb2 as pogoprotos_dot_enums_dot_pokemon__move__pb2
+from pogoprotos.enums import pokemon_id_pb2 as pogoprotos_dot_enums_dot_pokemon__id__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -20,9 +22,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.data.combat',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n+pogoprotos/data/combat/combat_pokemon.proto\x12\x16pogoprotos.data.combat\x1a%pogoprotos/data/pokemon_display.proto\"\xbe\x03\n\rCombatPokemon\x12\x12\n\npokemon_id\x18\x01 \x01(\x06\x12\x12\n\npokedex_id\x18\x02 \x01(\x05\x12\n\n\x02\x63p\x18\x03 \x01(\x05\x12\x15\n\rcp_multiplier\x18\x04 \x01(\x02\x12\x0f\n\x07stamina\x18\x05 \x01(\x05\x12\x13\n\x0bmax_stamina\x18\x06 \x01(\x05\x12\r\n\x05move1\x18\x07 \x01(\x05\x12\r\n\x05move2\x18\x08 \x01(\x05\x12\r\n\x05move3\x18\t \x01(\x05\x12\x0e\n\x06\x65nergy\x18\n \x01(\x05\x12\x38\n\x0fpokemon_display\x18\x0b \x01(\x0b\x32\x1f.pogoprotos.data.PokemonDisplay\x12\x19\n\x11individual_attack\x18\x0c \x01(\x05\x12\x1a\n\x12individual_defense\x18\r \x01(\x05\x12\x1a\n\x12individual_stamina\x18\x0e \x01(\x05\x12\x19\n\x11\x61ttack_stat_stage\x18\x0f \x01(\x05\x12\x1a\n\x12\x64\x65\x66\x65nse_stat_stage\x18\x10 \x01(\x05\x12\x13\n\x0b\x62\x61ttles_won\x18\x11 \x01(\x05\x12\x14\n\x0c\x62\x61ttles_lost\x18\x12 \x01(\x05\x12\x10\n\x08nickname\x18\x13 \x01(\tb\x06proto3')
+  serialized_pb=_b('\n+pogoprotos/data/combat/combat_pokemon.proto\x12\x16pogoprotos.data.combat\x1a%pogoprotos/data/pokemon_display.proto\x1a#pogoprotos/enums/pokemon_move.proto\x1a!pogoprotos/enums/pokemon_id.proto\"\xb8\x04\n\rCombatPokemon\x12\x12\n\npokemon_id\x18\x01 \x01(\x06\x12/\n\npokedex_id\x18\x02 \x01(\x0e\x32\x1b.pogoprotos.enums.PokemonId\x12\n\n\x02\x63p\x18\x03 \x01(\x05\x12\x15\n\rcp_multiplier\x18\x04 \x01(\x02\x12\x0f\n\x07stamina\x18\x05 \x01(\x05\x12\x13\n\x0bmax_stamina\x18\x06 \x01(\x05\x12,\n\x05move1\x18\x07 \x01(\x0e\x32\x1d.pogoprotos.enums.PokemonMove\x12,\n\x05move2\x18\x08 \x01(\x0e\x32\x1d.pogoprotos.enums.PokemonMove\x12,\n\x05move3\x18\t \x01(\x0e\x32\x1d.pogoprotos.enums.PokemonMove\x12\x0e\n\x06\x65nergy\x18\n \x01(\x05\x12\x38\n\x0fpokemon_display\x18\x0b \x01(\x0b\x32\x1f.pogoprotos.data.PokemonDisplay\x12\x19\n\x11individual_attack\x18\x0c \x01(\x05\x12\x1a\n\x12individual_defense\x18\r \x01(\x05\x12\x1a\n\x12individual_stamina\x18\x0e \x01(\x05\x12\x19\n\x11\x61ttack_stat_stage\x18\x0f \x01(\x05\x12\x1a\n\x12\x64\x65\x66\x65nse_stat_stage\x18\x10 \x01(\x05\x12\x13\n\x0b\x62\x61ttles_won\x18\x11 \x01(\x05\x12\x14\n\x0c\x62\x61ttles_lost\x18\x12 \x01(\x05\x12\x10\n\x08nickname\x18\x13 \x01(\tb\x06proto3')
   ,
-  dependencies=[pogoprotos_dot_data_dot_pokemon__display__pb2.DESCRIPTOR,])
+  dependencies=[pogoprotos_dot_data_dot_pokemon__display__pb2.DESCRIPTOR,pogoprotos_dot_enums_dot_pokemon__move__pb2.DESCRIPTOR,pogoprotos_dot_enums_dot_pokemon__id__pb2.DESCRIPTOR,])
 
 
 
@@ -43,7 +45,7 @@ _COMBATPOKEMON = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='pokedex_id', full_name='pogoprotos.data.combat.CombatPokemon.pokedex_id', index=1,
-      number=2, type=5, cpp_type=1, label=1,
+      number=2, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -78,21 +80,21 @@ _COMBATPOKEMON = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='move1', full_name='pogoprotos.data.combat.CombatPokemon.move1', index=6,
-      number=7, type=5, cpp_type=1, label=1,
+      number=7, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='move2', full_name='pogoprotos.data.combat.CombatPokemon.move2', index=7,
-      number=8, type=5, cpp_type=1, label=1,
+      number=8, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='move3', full_name='pogoprotos.data.combat.CombatPokemon.move3', index=8,
-      number=9, type=5, cpp_type=1, label=1,
+      number=9, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -179,10 +181,14 @@ _COMBATPOKEMON = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=111,
-  serialized_end=557,
+  serialized_start=183,
+  serialized_end=751,
 )
 
+_COMBATPOKEMON.fields_by_name['pokedex_id'].enum_type = pogoprotos_dot_enums_dot_pokemon__id__pb2._POKEMONID
+_COMBATPOKEMON.fields_by_name['move1'].enum_type = pogoprotos_dot_enums_dot_pokemon__move__pb2._POKEMONMOVE
+_COMBATPOKEMON.fields_by_name['move2'].enum_type = pogoprotos_dot_enums_dot_pokemon__move__pb2._POKEMONMOVE
+_COMBATPOKEMON.fields_by_name['move3'].enum_type = pogoprotos_dot_enums_dot_pokemon__move__pb2._POKEMONMOVE
 _COMBATPOKEMON.fields_by_name['pokemon_display'].message_type = pogoprotos_dot_data_dot_pokemon__display__pb2._POKEMONDISPLAY
 DESCRIPTOR.message_types_by_name['CombatPokemon'] = _COMBATPOKEMON
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)

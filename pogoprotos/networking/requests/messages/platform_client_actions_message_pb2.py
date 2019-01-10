@@ -14,6 +14,7 @@ _sym_db = _symbol_database.Default()
 
 from pogoprotos.data.player import player_reputation_pb2 as pogoprotos_dot_data_dot_player_dot_player__reputation__pb2
 from pogoprotos.enums import identity_provider_pb2 as pogoprotos_dot_enums_dot_identity__provider__pb2
+from pogoprotos.enums import notification_state_pb2 as pogoprotos_dot_enums_dot_notification__state__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -21,33 +22,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.networking.requests.messages',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\nMpogoprotos/networking/requests/messages/platform_client_actions_message.proto\x12\'pogoprotos.networking.requests.messages\x1a.pogoprotos/data/player/player_reputation.proto\x1a(pogoprotos/enums/identity_provider.proto\"\xed\x02\n\x1fRegisterPushNotificationMessage\x12\x64\n\tapn_token\x18\x01 \x01(\x0b\x32Q.pogoprotos.networking.requests.messages.RegisterPushNotificationMessage.ApnToken\x12\x64\n\tgcm_token\x18\x02 \x01(\x0b\x32Q.pogoprotos.networking.requests.messages.RegisterPushNotificationMessage.GcmToken\x1aY\n\x08\x41pnToken\x12\x17\n\x0fregistration_id\x18\x01 \x01(\t\x12\x19\n\x11\x62undle_identifier\x18\x02 \x01(\t\x12\x19\n\x11payload_byte_size\x18\x03 \x01(\x05\x1a#\n\x08GcmToken\x12\x17\n\x0fregistration_id\x18\x01 \x01(\t\"\xf5\x01\n\x1fUpdateNotificationStatusMessage\x12\x18\n\x10notification_ids\x18\x01 \x03(\t\x12\x1b\n\x13\x63reate_timestamp_ms\x18\x02 \x03(\x03\x12i\n\x05state\x18\x03 \x01(\x0e\x32Z.pogoprotos.networking.requests.messages.UpdateNotificationStatusMessage.NotificationState\"0\n\x11NotificationState\x12\x0f\n\x0bUNSET_STATE\x10\x00\x12\n\n\x06VIEWED\x10\x01\";\n%OptOutPushNotificationCategoryMessage\x12\x12\n\ncategories\x18\x01 \x03(\t\")\n\x15RedeemPasscodeRequest\x12\x10\n\x08passcode\x18\x01 \x01(\t\"\xa9\x02\n\x10\x41\x64\x64NewPoiMessage\x12\r\n\x05title\x18\x01 \x01(\t\x12\x18\n\x10long_description\x18\x02 \x01(\t\x12\x1a\n\x12image_gs_file_path\x18\x03 \x01(\t\x12\x0e\n\x06lat_e6\x18\x04 \x01(\x05\x12\x0e\n\x06lng_e6\x18\x05 \x01(\x05\x12\x19\n\x11image_serving_url\x18\x06 \x01(\t\x12\x0f\n\x07user_id\x18\x07 \x01(\t\x12\x17\n\x0fplayer_language\x18\x08 \x01(\t\x12\x16\n\x0egame_unique_id\x18\t \x01(\t\x12\x0e\n\x06\x61pp_id\x18\n \x01(\t\x12\x43\n\x11player_reputation\x18\x0b \x01(\x0b\x32(.pogoprotos.data.player.PlayerReputation\"I\n\x18ProxySocialActionMessage\x12\x0e\n\x06\x61\x63tion\x18\x01 \x01(\r\x12\x0c\n\x04host\x18\x02 \x01(\t\x12\x0f\n\x07payload\x18\x03 \x01(\x0c\" \n\x1eGetAvailableSubmissionsMessage\"\xed\x01\n\x1fPushNotificationRegistryMessage\x12\x64\n\tapn_token\x18\x01 \x01(\x0b\x32Q.pogoprotos.networking.requests.messages.RegisterPushNotificationMessage.ApnToken\x12\x64\n\tgcm_token\x18\x02 \x01(\x0b\x32Q.pogoprotos.networking.requests.messages.RegisterPushNotificationMessage.GcmToken\"m\n\x15\x41\x64\x64LoginActionMessage\x12=\n\x11identity_provider\x18\x01 \x01(\x0e\x32\".pogoprotos.enums.IdentityProvider\x12\x15\n\rinner_message\x18\x02 \x01(\x0c\"Y\n\x18RemoveLoginActionMessage\x12=\n\x11identity_provider\x18\x01 \x01(\x0e\x32\".pogoprotos.enums.IdentityProvider\"|\n\x13SubmitNewPoiMessage\x12\r\n\x05title\x18\x01 \x01(\t\x12\x18\n\x10long_description\x18\x02 \x01(\t\x12\x0e\n\x06lat_e6\x18\x04 \x01(\x05\x12\x0e\n\x06lng_e6\x18\x05 \x01(\x05\x12\x1c\n\x14supporting_statement\x18\x0e \x01(\t\"C\n\x1aUploadPoiPhotoByUrlMessage\x12\x12\n\nrequest_id\x18\x01 \x01(\t\x12\x11\n\timage_url\x18\x02 \x01(\t\"\x8a\x01\n\x0bPingMessage\x12\x1b\n\x13response_size_bytes\x18\x01 \x01(\x05\x12\x1c\n\x14random_request_bytes\x18\x02 \x01(\t\x12*\n\"use_cache_for_random_request_bytes\x18\x03 \x01(\x08\x12\x14\n\x0creturn_value\x18\x04 \x01(\t\"\xb4\x01\n\x17ReplaceLoginActionProto\x12\x46\n\x1a\x65xisting_identity_provider\x18\x01 \x01(\x0e\x32\".pogoprotos.enums.IdentityProvider\x12Q\n\tnew_login\x18\x02 \x01(\x0b\x32>.pogoprotos.networking.requests.messages.AddLoginActionMessageb\x06proto3')
+  serialized_pb=_b('\nMpogoprotos/networking/requests/messages/platform_client_actions_message.proto\x12\'pogoprotos.networking.requests.messages\x1a.pogoprotos/data/player/player_reputation.proto\x1a(pogoprotos/enums/identity_provider.proto\x1a)pogoprotos/enums/notification_state.proto\"\xed\x02\n\x1fRegisterPushNotificationMessage\x12\x64\n\tapn_token\x18\x01 \x01(\x0b\x32Q.pogoprotos.networking.requests.messages.RegisterPushNotificationMessage.ApnToken\x12\x64\n\tgcm_token\x18\x02 \x01(\x0b\x32Q.pogoprotos.networking.requests.messages.RegisterPushNotificationMessage.GcmToken\x1aY\n\x08\x41pnToken\x12\x17\n\x0fregistration_id\x18\x01 \x01(\t\x12\x19\n\x11\x62undle_identifier\x18\x02 \x01(\t\x12\x19\n\x11payload_byte_size\x18\x03 \x01(\x05\x1a#\n\x08GcmToken\x12\x17\n\x0fregistration_id\x18\x01 \x01(\t\"\x8c\x01\n\x1fUpdateNotificationStatusMessage\x12\x18\n\x10notification_ids\x18\x01 \x03(\t\x12\x1b\n\x13\x63reate_timestamp_ms\x18\x02 \x03(\x03\x12\x32\n\x05state\x18\x03 \x01(\x0e\x32#.pogoprotos.enums.NotificationState\";\n%OptOutPushNotificationCategoryMessage\x12\x12\n\ncategories\x18\x01 \x03(\t\")\n\x15RedeemPasscodeMessage\x12\x10\n\x08passcode\x18\x01 \x01(\t\"\xa9\x02\n\x10\x41\x64\x64NewPoiMessage\x12\r\n\x05title\x18\x01 \x01(\t\x12\x18\n\x10long_description\x18\x02 \x01(\t\x12\x1a\n\x12image_gs_file_path\x18\x03 \x01(\t\x12\x0e\n\x06lat_e6\x18\x04 \x01(\x05\x12\x0e\n\x06lng_e6\x18\x05 \x01(\x05\x12\x19\n\x11image_serving_url\x18\x06 \x01(\t\x12\x0f\n\x07user_id\x18\x07 \x01(\t\x12\x17\n\x0fplayer_language\x18\x08 \x01(\t\x12\x16\n\x0egame_unique_id\x18\t \x01(\t\x12\x0e\n\x06\x61pp_id\x18\n \x01(\t\x12\x43\n\x11player_reputation\x18\x0b \x01(\x0b\x32(.pogoprotos.data.player.PlayerReputation\"I\n\x18ProxySocialActionMessage\x12\x0e\n\x06\x61\x63tion\x18\x01 \x01(\r\x12\x0c\n\x04host\x18\x02 \x01(\t\x12\x0f\n\x07payload\x18\x03 \x01(\x0c\"T\n#ProxySocialSideChannelActionMessage\x12\x0e\n\x06\x61\x63tion\x18\x01 \x01(\r\x12\x0c\n\x04host\x18\x02 \x01(\t\x12\x0f\n\x07payload\x18\x03 \x01(\x0c\" \n\x1eGetAvailableSubmissionsMessage\"\xed\x01\n\x1fPushNotificationRegistryMessage\x12\x64\n\tapn_token\x18\x01 \x01(\x0b\x32Q.pogoprotos.networking.requests.messages.RegisterPushNotificationMessage.ApnToken\x12\x64\n\tgcm_token\x18\x02 \x01(\x0b\x32Q.pogoprotos.networking.requests.messages.RegisterPushNotificationMessage.GcmToken\"m\n\x15\x41\x64\x64LoginActionMessage\x12=\n\x11identity_provider\x18\x01 \x01(\x0e\x32\".pogoprotos.enums.IdentityProvider\x12\x15\n\rinner_message\x18\x02 \x01(\x0c\"Y\n\x18RemoveLoginActionMessage\x12=\n\x11identity_provider\x18\x01 \x01(\x0e\x32\".pogoprotos.enums.IdentityProvider\"|\n\x13SubmitNewPoiMessage\x12\r\n\x05title\x18\x01 \x01(\t\x12\x18\n\x10long_description\x18\x02 \x01(\t\x12\x0e\n\x06lat_e6\x18\x04 \x01(\x05\x12\x0e\n\x06lng_e6\x18\x05 \x01(\x05\x12\x1c\n\x14supporting_statement\x18\x0e \x01(\t\"C\n\x1aUploadPoiPhotoByUrlMessage\x12\x12\n\nrequest_id\x18\x01 \x01(\t\x12\x11\n\timage_url\x18\x02 \x01(\t\"\x8a\x01\n\x0bPingMessage\x12\x1b\n\x13response_size_bytes\x18\x01 \x01(\x05\x12\x1c\n\x14random_request_bytes\x18\x02 \x01(\t\x12*\n\"use_cache_for_random_request_bytes\x18\x03 \x01(\x08\x12\x14\n\x0creturn_value\x18\x04 \x01(\t\"\xb6\x01\n\x19ReplaceLoginActionMessage\x12\x46\n\x1a\x65xisting_identity_provider\x18\x01 \x01(\x0e\x32\".pogoprotos.enums.IdentityProvider\x12Q\n\tnew_login\x18\x02 \x01(\x0b\x32>.pogoprotos.networking.requests.messages.AddLoginActionMessage\"\x18\n\x16ListLoginActionMessageb\x06proto3')
   ,
-  dependencies=[pogoprotos_dot_data_dot_player_dot_player__reputation__pb2.DESCRIPTOR,pogoprotos_dot_enums_dot_identity__provider__pb2.DESCRIPTOR,])
+  dependencies=[pogoprotos_dot_data_dot_player_dot_player__reputation__pb2.DESCRIPTOR,pogoprotos_dot_enums_dot_identity__provider__pb2.DESCRIPTOR,pogoprotos_dot_enums_dot_notification__state__pb2.DESCRIPTOR,])
 
 
-
-_UPDATENOTIFICATIONSTATUSMESSAGE_NOTIFICATIONSTATE = _descriptor.EnumDescriptor(
-  name='NotificationState',
-  full_name='pogoprotos.networking.requests.messages.UpdateNotificationStatusMessage.NotificationState',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='UNSET_STATE', index=0, number=0,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='VIEWED', index=1, number=1,
-      serialized_options=None,
-      type=None),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=778,
-  serialized_end=826,
-)
-_sym_db.RegisterEnumDescriptor(_UPDATENOTIFICATIONSTATUSMESSAGE_NOTIFICATIONSTATE)
 
 
 _REGISTERPUSHNOTIFICATIONMESSAGE_APNTOKEN = _descriptor.Descriptor(
@@ -90,8 +69,8 @@ _REGISTERPUSHNOTIFICATIONMESSAGE_APNTOKEN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=452,
-  serialized_end=541,
+  serialized_start=495,
+  serialized_end=584,
 )
 
 _REGISTERPUSHNOTIFICATIONMESSAGE_GCMTOKEN = _descriptor.Descriptor(
@@ -120,8 +99,8 @@ _REGISTERPUSHNOTIFICATIONMESSAGE_GCMTOKEN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=543,
-  serialized_end=578,
+  serialized_start=586,
+  serialized_end=621,
 )
 
 _REGISTERPUSHNOTIFICATIONMESSAGE = _descriptor.Descriptor(
@@ -157,8 +136,8 @@ _REGISTERPUSHNOTIFICATIONMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=213,
-  serialized_end=578,
+  serialized_start=256,
+  serialized_end=621,
 )
 
 
@@ -195,7 +174,6 @@ _UPDATENOTIFICATIONSTATUSMESSAGE = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
-    _UPDATENOTIFICATIONSTATUSMESSAGE_NOTIFICATIONSTATE,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -203,8 +181,8 @@ _UPDATENOTIFICATIONSTATUSMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=581,
-  serialized_end=826,
+  serialized_start=624,
+  serialized_end=764,
 )
 
 
@@ -234,20 +212,20 @@ _OPTOUTPUSHNOTIFICATIONCATEGORYMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=828,
-  serialized_end=887,
+  serialized_start=766,
+  serialized_end=825,
 )
 
 
-_REDEEMPASSCODEREQUEST = _descriptor.Descriptor(
-  name='RedeemPasscodeRequest',
-  full_name='pogoprotos.networking.requests.messages.RedeemPasscodeRequest',
+_REDEEMPASSCODEMESSAGE = _descriptor.Descriptor(
+  name='RedeemPasscodeMessage',
+  full_name='pogoprotos.networking.requests.messages.RedeemPasscodeMessage',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='passcode', full_name='pogoprotos.networking.requests.messages.RedeemPasscodeRequest.passcode', index=0,
+      name='passcode', full_name='pogoprotos.networking.requests.messages.RedeemPasscodeMessage.passcode', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -265,8 +243,8 @@ _REDEEMPASSCODEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=889,
-  serialized_end=930,
+  serialized_start=827,
+  serialized_end=868,
 )
 
 
@@ -366,8 +344,8 @@ _ADDNEWPOIMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=933,
-  serialized_end=1230,
+  serialized_start=871,
+  serialized_end=1168,
 )
 
 
@@ -411,8 +389,53 @@ _PROXYSOCIALACTIONMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1232,
-  serialized_end=1305,
+  serialized_start=1170,
+  serialized_end=1243,
+)
+
+
+_PROXYSOCIALSIDECHANNELACTIONMESSAGE = _descriptor.Descriptor(
+  name='ProxySocialSideChannelActionMessage',
+  full_name='pogoprotos.networking.requests.messages.ProxySocialSideChannelActionMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='action', full_name='pogoprotos.networking.requests.messages.ProxySocialSideChannelActionMessage.action', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='host', full_name='pogoprotos.networking.requests.messages.ProxySocialSideChannelActionMessage.host', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='payload', full_name='pogoprotos.networking.requests.messages.ProxySocialSideChannelActionMessage.payload', index=2,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1245,
+  serialized_end=1329,
 )
 
 
@@ -435,8 +458,8 @@ _GETAVAILABLESUBMISSIONSMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1307,
-  serialized_end=1339,
+  serialized_start=1331,
+  serialized_end=1363,
 )
 
 
@@ -473,8 +496,8 @@ _PUSHNOTIFICATIONREGISTRYMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1342,
-  serialized_end=1579,
+  serialized_start=1366,
+  serialized_end=1603,
 )
 
 
@@ -511,8 +534,8 @@ _ADDLOGINACTIONMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1581,
-  serialized_end=1690,
+  serialized_start=1605,
+  serialized_end=1714,
 )
 
 
@@ -542,8 +565,8 @@ _REMOVELOGINACTIONMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1692,
-  serialized_end=1781,
+  serialized_start=1716,
+  serialized_end=1805,
 )
 
 
@@ -601,8 +624,8 @@ _SUBMITNEWPOIMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1783,
-  serialized_end=1907,
+  serialized_start=1807,
+  serialized_end=1931,
 )
 
 
@@ -639,8 +662,8 @@ _UPLOADPOIPHOTOBYURLMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1909,
-  serialized_end=1976,
+  serialized_start=1933,
+  serialized_end=2000,
 )
 
 
@@ -691,27 +714,27 @@ _PINGMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1979,
-  serialized_end=2117,
+  serialized_start=2003,
+  serialized_end=2141,
 )
 
 
-_REPLACELOGINACTIONPROTO = _descriptor.Descriptor(
-  name='ReplaceLoginActionProto',
-  full_name='pogoprotos.networking.requests.messages.ReplaceLoginActionProto',
+_REPLACELOGINACTIONMESSAGE = _descriptor.Descriptor(
+  name='ReplaceLoginActionMessage',
+  full_name='pogoprotos.networking.requests.messages.ReplaceLoginActionMessage',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='existing_identity_provider', full_name='pogoprotos.networking.requests.messages.ReplaceLoginActionProto.existing_identity_provider', index=0,
+      name='existing_identity_provider', full_name='pogoprotos.networking.requests.messages.ReplaceLoginActionMessage.existing_identity_provider', index=0,
       number=1, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='new_login', full_name='pogoprotos.networking.requests.messages.ReplaceLoginActionProto.new_login', index=1,
+      name='new_login', full_name='pogoprotos.networking.requests.messages.ReplaceLoginActionMessage.new_login', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -729,29 +752,53 @@ _REPLACELOGINACTIONPROTO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2120,
-  serialized_end=2300,
+  serialized_start=2144,
+  serialized_end=2326,
+)
+
+
+_LISTLOGINACTIONMESSAGE = _descriptor.Descriptor(
+  name='ListLoginActionMessage',
+  full_name='pogoprotos.networking.requests.messages.ListLoginActionMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2328,
+  serialized_end=2352,
 )
 
 _REGISTERPUSHNOTIFICATIONMESSAGE_APNTOKEN.containing_type = _REGISTERPUSHNOTIFICATIONMESSAGE
 _REGISTERPUSHNOTIFICATIONMESSAGE_GCMTOKEN.containing_type = _REGISTERPUSHNOTIFICATIONMESSAGE
 _REGISTERPUSHNOTIFICATIONMESSAGE.fields_by_name['apn_token'].message_type = _REGISTERPUSHNOTIFICATIONMESSAGE_APNTOKEN
 _REGISTERPUSHNOTIFICATIONMESSAGE.fields_by_name['gcm_token'].message_type = _REGISTERPUSHNOTIFICATIONMESSAGE_GCMTOKEN
-_UPDATENOTIFICATIONSTATUSMESSAGE.fields_by_name['state'].enum_type = _UPDATENOTIFICATIONSTATUSMESSAGE_NOTIFICATIONSTATE
-_UPDATENOTIFICATIONSTATUSMESSAGE_NOTIFICATIONSTATE.containing_type = _UPDATENOTIFICATIONSTATUSMESSAGE
+_UPDATENOTIFICATIONSTATUSMESSAGE.fields_by_name['state'].enum_type = pogoprotos_dot_enums_dot_notification__state__pb2._NOTIFICATIONSTATE
 _ADDNEWPOIMESSAGE.fields_by_name['player_reputation'].message_type = pogoprotos_dot_data_dot_player_dot_player__reputation__pb2._PLAYERREPUTATION
 _PUSHNOTIFICATIONREGISTRYMESSAGE.fields_by_name['apn_token'].message_type = _REGISTERPUSHNOTIFICATIONMESSAGE_APNTOKEN
 _PUSHNOTIFICATIONREGISTRYMESSAGE.fields_by_name['gcm_token'].message_type = _REGISTERPUSHNOTIFICATIONMESSAGE_GCMTOKEN
 _ADDLOGINACTIONMESSAGE.fields_by_name['identity_provider'].enum_type = pogoprotos_dot_enums_dot_identity__provider__pb2._IDENTITYPROVIDER
 _REMOVELOGINACTIONMESSAGE.fields_by_name['identity_provider'].enum_type = pogoprotos_dot_enums_dot_identity__provider__pb2._IDENTITYPROVIDER
-_REPLACELOGINACTIONPROTO.fields_by_name['existing_identity_provider'].enum_type = pogoprotos_dot_enums_dot_identity__provider__pb2._IDENTITYPROVIDER
-_REPLACELOGINACTIONPROTO.fields_by_name['new_login'].message_type = _ADDLOGINACTIONMESSAGE
+_REPLACELOGINACTIONMESSAGE.fields_by_name['existing_identity_provider'].enum_type = pogoprotos_dot_enums_dot_identity__provider__pb2._IDENTITYPROVIDER
+_REPLACELOGINACTIONMESSAGE.fields_by_name['new_login'].message_type = _ADDLOGINACTIONMESSAGE
 DESCRIPTOR.message_types_by_name['RegisterPushNotificationMessage'] = _REGISTERPUSHNOTIFICATIONMESSAGE
 DESCRIPTOR.message_types_by_name['UpdateNotificationStatusMessage'] = _UPDATENOTIFICATIONSTATUSMESSAGE
 DESCRIPTOR.message_types_by_name['OptOutPushNotificationCategoryMessage'] = _OPTOUTPUSHNOTIFICATIONCATEGORYMESSAGE
-DESCRIPTOR.message_types_by_name['RedeemPasscodeRequest'] = _REDEEMPASSCODEREQUEST
+DESCRIPTOR.message_types_by_name['RedeemPasscodeMessage'] = _REDEEMPASSCODEMESSAGE
 DESCRIPTOR.message_types_by_name['AddNewPoiMessage'] = _ADDNEWPOIMESSAGE
 DESCRIPTOR.message_types_by_name['ProxySocialActionMessage'] = _PROXYSOCIALACTIONMESSAGE
+DESCRIPTOR.message_types_by_name['ProxySocialSideChannelActionMessage'] = _PROXYSOCIALSIDECHANNELACTIONMESSAGE
 DESCRIPTOR.message_types_by_name['GetAvailableSubmissionsMessage'] = _GETAVAILABLESUBMISSIONSMESSAGE
 DESCRIPTOR.message_types_by_name['PushNotificationRegistryMessage'] = _PUSHNOTIFICATIONREGISTRYMESSAGE
 DESCRIPTOR.message_types_by_name['AddLoginActionMessage'] = _ADDLOGINACTIONMESSAGE
@@ -759,7 +806,8 @@ DESCRIPTOR.message_types_by_name['RemoveLoginActionMessage'] = _REMOVELOGINACTIO
 DESCRIPTOR.message_types_by_name['SubmitNewPoiMessage'] = _SUBMITNEWPOIMESSAGE
 DESCRIPTOR.message_types_by_name['UploadPoiPhotoByUrlMessage'] = _UPLOADPOIPHOTOBYURLMESSAGE
 DESCRIPTOR.message_types_by_name['PingMessage'] = _PINGMESSAGE
-DESCRIPTOR.message_types_by_name['ReplaceLoginActionProto'] = _REPLACELOGINACTIONPROTO
+DESCRIPTOR.message_types_by_name['ReplaceLoginActionMessage'] = _REPLACELOGINACTIONMESSAGE
+DESCRIPTOR.message_types_by_name['ListLoginActionMessage'] = _LISTLOGINACTIONMESSAGE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 RegisterPushNotificationMessage = _reflection.GeneratedProtocolMessageType('RegisterPushNotificationMessage', (_message.Message,), dict(
@@ -799,12 +847,12 @@ OptOutPushNotificationCategoryMessage = _reflection.GeneratedProtocolMessageType
   ))
 _sym_db.RegisterMessage(OptOutPushNotificationCategoryMessage)
 
-RedeemPasscodeRequest = _reflection.GeneratedProtocolMessageType('RedeemPasscodeRequest', (_message.Message,), dict(
-  DESCRIPTOR = _REDEEMPASSCODEREQUEST,
+RedeemPasscodeMessage = _reflection.GeneratedProtocolMessageType('RedeemPasscodeMessage', (_message.Message,), dict(
+  DESCRIPTOR = _REDEEMPASSCODEMESSAGE,
   __module__ = 'pogoprotos.networking.requests.messages.platform_client_actions_message_pb2'
-  # @@protoc_insertion_point(class_scope:pogoprotos.networking.requests.messages.RedeemPasscodeRequest)
+  # @@protoc_insertion_point(class_scope:pogoprotos.networking.requests.messages.RedeemPasscodeMessage)
   ))
-_sym_db.RegisterMessage(RedeemPasscodeRequest)
+_sym_db.RegisterMessage(RedeemPasscodeMessage)
 
 AddNewPoiMessage = _reflection.GeneratedProtocolMessageType('AddNewPoiMessage', (_message.Message,), dict(
   DESCRIPTOR = _ADDNEWPOIMESSAGE,
@@ -819,6 +867,13 @@ ProxySocialActionMessage = _reflection.GeneratedProtocolMessageType('ProxySocial
   # @@protoc_insertion_point(class_scope:pogoprotos.networking.requests.messages.ProxySocialActionMessage)
   ))
 _sym_db.RegisterMessage(ProxySocialActionMessage)
+
+ProxySocialSideChannelActionMessage = _reflection.GeneratedProtocolMessageType('ProxySocialSideChannelActionMessage', (_message.Message,), dict(
+  DESCRIPTOR = _PROXYSOCIALSIDECHANNELACTIONMESSAGE,
+  __module__ = 'pogoprotos.networking.requests.messages.platform_client_actions_message_pb2'
+  # @@protoc_insertion_point(class_scope:pogoprotos.networking.requests.messages.ProxySocialSideChannelActionMessage)
+  ))
+_sym_db.RegisterMessage(ProxySocialSideChannelActionMessage)
 
 GetAvailableSubmissionsMessage = _reflection.GeneratedProtocolMessageType('GetAvailableSubmissionsMessage', (_message.Message,), dict(
   DESCRIPTOR = _GETAVAILABLESUBMISSIONSMESSAGE,
@@ -869,12 +924,19 @@ PingMessage = _reflection.GeneratedProtocolMessageType('PingMessage', (_message.
   ))
 _sym_db.RegisterMessage(PingMessage)
 
-ReplaceLoginActionProto = _reflection.GeneratedProtocolMessageType('ReplaceLoginActionProto', (_message.Message,), dict(
-  DESCRIPTOR = _REPLACELOGINACTIONPROTO,
+ReplaceLoginActionMessage = _reflection.GeneratedProtocolMessageType('ReplaceLoginActionMessage', (_message.Message,), dict(
+  DESCRIPTOR = _REPLACELOGINACTIONMESSAGE,
   __module__ = 'pogoprotos.networking.requests.messages.platform_client_actions_message_pb2'
-  # @@protoc_insertion_point(class_scope:pogoprotos.networking.requests.messages.ReplaceLoginActionProto)
+  # @@protoc_insertion_point(class_scope:pogoprotos.networking.requests.messages.ReplaceLoginActionMessage)
   ))
-_sym_db.RegisterMessage(ReplaceLoginActionProto)
+_sym_db.RegisterMessage(ReplaceLoginActionMessage)
+
+ListLoginActionMessage = _reflection.GeneratedProtocolMessageType('ListLoginActionMessage', (_message.Message,), dict(
+  DESCRIPTOR = _LISTLOGINACTIONMESSAGE,
+  __module__ = 'pogoprotos.networking.requests.messages.platform_client_actions_message_pb2'
+  # @@protoc_insertion_point(class_scope:pogoprotos.networking.requests.messages.ListLoginActionMessage)
+  ))
+_sym_db.RegisterMessage(ListLoginActionMessage)
 
 
 # @@protoc_insertion_point(module_scope)

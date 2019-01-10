@@ -12,7 +12,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from pogoprotos.networking.platform.telemetry import platform_metric_data_pb2 as pogoprotos_dot_networking_dot_platform_dot_telemetry_dot_platform__metric__data__pb2
+from pogoprotos.data.telemetry import platform_metric_data_pb2 as pogoprotos_dot_data_dot_telemetry_dot_platform__metric__data__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -20,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.data.telemetry',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n*pogoprotos/data/telemetry/frame_rate.proto\x12\x19pogoprotos.data.telemetry\x1a\x43pogoprotos/networking/platform/telemetry/platform_metric_data.proto\"e\n\tFrameRate\x12X\n\x12sampled_frame_rate\x18\x01 \x01(\x0b\x32<.pogoprotos.networking.platform.telemetry.PlatformMetricDatab\x06proto3')
+  serialized_pb=_b('\n*pogoprotos/data/telemetry/frame_rate.proto\x12\x19pogoprotos.data.telemetry\x1a\x34pogoprotos/data/telemetry/platform_metric_data.proto\"V\n\tFrameRate\x12I\n\x12sampled_frame_rate\x18\x01 \x01(\x0b\x32-.pogoprotos.data.telemetry.PlatformMetricDatab\x06proto3')
   ,
-  dependencies=[pogoprotos_dot_networking_dot_platform_dot_telemetry_dot_platform__metric__data__pb2.DESCRIPTOR,])
+  dependencies=[pogoprotos_dot_data_dot_telemetry_dot_platform__metric__data__pb2.DESCRIPTOR,])
 
 
 
@@ -53,11 +53,11 @@ _FRAMERATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=142,
-  serialized_end=243,
+  serialized_start=127,
+  serialized_end=213,
 )
 
-_FRAMERATE.fields_by_name['sampled_frame_rate'].message_type = pogoprotos_dot_networking_dot_platform_dot_telemetry_dot_platform__metric__data__pb2._PLATFORMMETRICDATA
+_FRAMERATE.fields_by_name['sampled_frame_rate'].message_type = pogoprotos_dot_data_dot_telemetry_dot_platform__metric__data__pb2._PLATFORMMETRICDATA
 DESCRIPTOR.message_types_by_name['FrameRate'] = _FRAMERATE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 

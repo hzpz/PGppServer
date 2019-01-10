@@ -12,6 +12,10 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from pogoprotos.enums import costume_pb2 as pogoprotos_dot_enums_dot_costume__pb2
+from pogoprotos.enums import gender_pb2 as pogoprotos_dot_enums_dot_gender__pb2
+from pogoprotos.enums import pokemon_move_pb2 as pogoprotos_dot_enums_dot_pokemon__move__pb2
+from pogoprotos.enums import team_color_pb2 as pogoprotos_dot_enums_dot_team__color__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -19,44 +23,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.data.beluga',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n+pogoprotos/data/beluga/beluga_pokemon.proto\x12\x16pogoprotos.data.beluga\"\xd6\x08\n\rBelugaPokemon\x12\x14\n\x0ctrainer_name\x18\x01 \x01(\t\x12K\n\x0etrainer_gender\x18\x02 \x01(\x0e\x32\x33.pogoprotos.data.beluga.BelugaPokemon.TrainerGender\x12@\n\x0ctrainer_team\x18\x03 \x01(\x0e\x32*.pogoprotos.data.beluga.BelugaPokemon.Team\x12\x15\n\rtrainer_level\x18\x04 \x01(\x05\x12\x12\n\npokedex_id\x18\x05 \x01(\x05\x12\n\n\x02\x63p\x18\x06 \x01(\x05\x12\x15\n\rpokemon_level\x18\x07 \x01(\x02\x12\x0e\n\x06max_hp\x18\x08 \x01(\x05\x12\x12\n\norigin_lat\x18\t \x01(\x01\x12\x12\n\norigin_lng\x18\n \x01(\x01\x12\x0e\n\x06height\x18\x0b \x01(\x02\x12\x0e\n\x06weight\x18\x0c \x01(\x02\x12\x19\n\x11individual_attack\x18\r \x01(\x05\x12\x1a\n\x12individual_defense\x18\x0e \x01(\x05\x12\x1a\n\x12individual_stamina\x18\x0f \x01(\x05\x12\x14\n\x0c\x63reation_day\x18\x10 \x01(\x05\x12\x16\n\x0e\x63reation_month\x18\x11 \x01(\x05\x12\x15\n\rcreation_year\x18\x12 \x01(\x05\x12\x10\n\x08nickname\x18\x13 \x01(\t\x12\x43\n\x06gender\x18\x14 \x01(\x0e\x32\x33.pogoprotos.data.beluga.BelugaPokemon.PokemonGender\x12\x45\n\x07\x63ostume\x18\x15 \x01(\x0e\x32\x34.pogoprotos.data.beluga.BelugaPokemon.PokemonCostume\x12?\n\x04\x66orm\x18\x16 \x01(\x0e\x32\x31.pogoprotos.data.beluga.BelugaPokemon.PokemonForm\x12\r\n\x05shiny\x18\x17 \x01(\x08\x12\r\n\x05move1\x18\x18 \x01(\x05\x12\r\n\x05move2\x18\x19 \x01(\x05\"l\n\x0ePokemonCostume\x12\t\n\x05UNSET\x10\x00\x12\x10\n\x0cHOLIDAY_2016\x10\x01\x12\x0f\n\x0b\x41NNIVERSARY\x10\x02\x12\x18\n\x14ONE_YEAR_ANNIVERSARY\x10\x03\x12\x12\n\x0eHALLOWEEN_2017\x10\x04\"(\n\x0bPokemonForm\x12\x0e\n\nFORM_UNSET\x10\x00\x12\t\n\x05\x41LOLA\x10\x01\"G\n\rPokemonGender\x12\x10\n\x0cGENDER_UNSET\x10\x00\x12\x08\n\x04MALE\x10\x01\x12\n\n\x06\x46\x45MALE\x10\x02\x12\x0e\n\nGENDERLESS\x10\x03\">\n\x04Team\x12\x08\n\x04NONE\x10\x00\x12\r\n\tTEAM_BLUE\x10\x01\x12\x0c\n\x08TEAM_RED\x10\x02\x12\x0f\n\x0bTEAM_YELLOW\x10\x03\"5\n\rTrainerGender\x12\x10\n\x0cTRAINER_MALE\x10\x00\x12\x12\n\x0eTRAINER_FEMALE\x10\x01\x62\x06proto3')
-)
+  serialized_pb=_b('\n+pogoprotos/data/beluga/beluga_pokemon.proto\x12\x16pogoprotos.data.beluga\x1a\x1epogoprotos/enums/costume.proto\x1a\x1dpogoprotos/enums/gender.proto\x1a#pogoprotos/enums/pokemon_move.proto\x1a!pogoprotos/enums/team_color.proto\"\xd8\x06\n\rBelugaPokemon\x12\x14\n\x0ctrainer_name\x18\x01 \x01(\t\x12K\n\x0etrainer_gender\x18\x02 \x01(\x0e\x32\x33.pogoprotos.data.beluga.BelugaPokemon.TrainerGender\x12\x31\n\x0ctrainer_team\x18\x03 \x01(\x0e\x32\x1b.pogoprotos.enums.TeamColor\x12\x15\n\rtrainer_level\x18\x04 \x01(\x05\x12\x12\n\npokedex_id\x18\x05 \x01(\x05\x12\n\n\x02\x63p\x18\x06 \x01(\x05\x12\x15\n\rpokemon_level\x18\x07 \x01(\x02\x12\x0e\n\x06max_hp\x18\x08 \x01(\x05\x12\x12\n\norigin_lat\x18\t \x01(\x01\x12\x12\n\norigin_lng\x18\n \x01(\x01\x12\x0e\n\x06height\x18\x0b \x01(\x02\x12\x0e\n\x06weight\x18\x0c \x01(\x02\x12\x19\n\x11individual_attack\x18\r \x01(\x05\x12\x1a\n\x12individual_defense\x18\x0e \x01(\x05\x12\x1a\n\x12individual_stamina\x18\x0f \x01(\x05\x12\x14\n\x0c\x63reation_day\x18\x10 \x01(\x05\x12\x16\n\x0e\x63reation_month\x18\x11 \x01(\x05\x12\x15\n\rcreation_year\x18\x12 \x01(\x05\x12\x10\n\x08nickname\x18\x13 \x01(\t\x12(\n\x06gender\x18\x14 \x01(\x0e\x32\x18.pogoprotos.enums.Gender\x12*\n\x07\x63ostume\x18\x15 \x01(\x0e\x32\x19.pogoprotos.enums.Costume\x12?\n\x04\x66orm\x18\x16 \x01(\x0e\x32\x31.pogoprotos.data.beluga.BelugaPokemon.PokemonForm\x12\r\n\x05shiny\x18\x17 \x01(\x08\x12,\n\x05move1\x18\x18 \x01(\x0e\x32\x1d.pogoprotos.enums.PokemonMove\x12,\n\x05move2\x18\x19 \x01(\x0e\x32\x1d.pogoprotos.enums.PokemonMove\"(\n\x0bPokemonForm\x12\x0e\n\nFORM_UNSET\x10\x00\x12\t\n\x05\x41LOLA\x10\x01\"5\n\rTrainerGender\x12\x10\n\x0cTRAINER_MALE\x10\x00\x12\x12\n\x0eTRAINER_FEMALE\x10\x01\x62\x06proto3')
+  ,
+  dependencies=[pogoprotos_dot_enums_dot_costume__pb2.DESCRIPTOR,pogoprotos_dot_enums_dot_gender__pb2.DESCRIPTOR,pogoprotos_dot_enums_dot_pokemon__move__pb2.DESCRIPTOR,pogoprotos_dot_enums_dot_team__color__pb2.DESCRIPTOR,])
 
 
-
-_BELUGAPOKEMON_POKEMONCOSTUME = _descriptor.EnumDescriptor(
-  name='PokemonCostume',
-  full_name='pogoprotos.data.beluga.BelugaPokemon.PokemonCostume',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='UNSET', index=0, number=0,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='HOLIDAY_2016', index=1, number=1,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='ANNIVERSARY', index=2, number=2,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='ONE_YEAR_ANNIVERSARY', index=3, number=3,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='HALLOWEEN_2017', index=4, number=4,
-      serialized_options=None,
-      type=None),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=840,
-  serialized_end=948,
-)
-_sym_db.RegisterEnumDescriptor(_BELUGAPOKEMON_POKEMONCOSTUME)
 
 _BELUGAPOKEMON_POKEMONFORM = _descriptor.EnumDescriptor(
   name='PokemonForm',
@@ -75,70 +46,10 @@ _BELUGAPOKEMON_POKEMONFORM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=950,
-  serialized_end=990,
+  serialized_start=968,
+  serialized_end=1008,
 )
 _sym_db.RegisterEnumDescriptor(_BELUGAPOKEMON_POKEMONFORM)
-
-_BELUGAPOKEMON_POKEMONGENDER = _descriptor.EnumDescriptor(
-  name='PokemonGender',
-  full_name='pogoprotos.data.beluga.BelugaPokemon.PokemonGender',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='GENDER_UNSET', index=0, number=0,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='MALE', index=1, number=1,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='FEMALE', index=2, number=2,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='GENDERLESS', index=3, number=3,
-      serialized_options=None,
-      type=None),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=992,
-  serialized_end=1063,
-)
-_sym_db.RegisterEnumDescriptor(_BELUGAPOKEMON_POKEMONGENDER)
-
-_BELUGAPOKEMON_TEAM = _descriptor.EnumDescriptor(
-  name='Team',
-  full_name='pogoprotos.data.beluga.BelugaPokemon.Team',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='NONE', index=0, number=0,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='TEAM_BLUE', index=1, number=1,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='TEAM_RED', index=2, number=2,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='TEAM_YELLOW', index=3, number=3,
-      serialized_options=None,
-      type=None),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=1065,
-  serialized_end=1127,
-)
-_sym_db.RegisterEnumDescriptor(_BELUGAPOKEMON_TEAM)
 
 _BELUGAPOKEMON_TRAINERGENDER = _descriptor.EnumDescriptor(
   name='TrainerGender',
@@ -157,8 +68,8 @@ _BELUGAPOKEMON_TRAINERGENDER = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1129,
-  serialized_end=1182,
+  serialized_start=1010,
+  serialized_end=1063,
 )
 _sym_db.RegisterEnumDescriptor(_BELUGAPOKEMON_TRAINERGENDER)
 
@@ -333,14 +244,14 @@ _BELUGAPOKEMON = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='move1', full_name='pogoprotos.data.beluga.BelugaPokemon.move1', index=23,
-      number=24, type=5, cpp_type=1, label=1,
+      number=24, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='move2', full_name='pogoprotos.data.beluga.BelugaPokemon.move2', index=24,
-      number=25, type=5, cpp_type=1, label=1,
+      number=25, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -350,10 +261,7 @@ _BELUGAPOKEMON = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
-    _BELUGAPOKEMON_POKEMONCOSTUME,
     _BELUGAPOKEMON_POKEMONFORM,
-    _BELUGAPOKEMON_POKEMONGENDER,
-    _BELUGAPOKEMON_TEAM,
     _BELUGAPOKEMON_TRAINERGENDER,
   ],
   serialized_options=None,
@@ -362,19 +270,18 @@ _BELUGAPOKEMON = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=72,
-  serialized_end=1182,
+  serialized_start=207,
+  serialized_end=1063,
 )
 
 _BELUGAPOKEMON.fields_by_name['trainer_gender'].enum_type = _BELUGAPOKEMON_TRAINERGENDER
-_BELUGAPOKEMON.fields_by_name['trainer_team'].enum_type = _BELUGAPOKEMON_TEAM
-_BELUGAPOKEMON.fields_by_name['gender'].enum_type = _BELUGAPOKEMON_POKEMONGENDER
-_BELUGAPOKEMON.fields_by_name['costume'].enum_type = _BELUGAPOKEMON_POKEMONCOSTUME
+_BELUGAPOKEMON.fields_by_name['trainer_team'].enum_type = pogoprotos_dot_enums_dot_team__color__pb2._TEAMCOLOR
+_BELUGAPOKEMON.fields_by_name['gender'].enum_type = pogoprotos_dot_enums_dot_gender__pb2._GENDER
+_BELUGAPOKEMON.fields_by_name['costume'].enum_type = pogoprotos_dot_enums_dot_costume__pb2._COSTUME
 _BELUGAPOKEMON.fields_by_name['form'].enum_type = _BELUGAPOKEMON_POKEMONFORM
-_BELUGAPOKEMON_POKEMONCOSTUME.containing_type = _BELUGAPOKEMON
+_BELUGAPOKEMON.fields_by_name['move1'].enum_type = pogoprotos_dot_enums_dot_pokemon__move__pb2._POKEMONMOVE
+_BELUGAPOKEMON.fields_by_name['move2'].enum_type = pogoprotos_dot_enums_dot_pokemon__move__pb2._POKEMONMOVE
 _BELUGAPOKEMON_POKEMONFORM.containing_type = _BELUGAPOKEMON
-_BELUGAPOKEMON_POKEMONGENDER.containing_type = _BELUGAPOKEMON
-_BELUGAPOKEMON_TEAM.containing_type = _BELUGAPOKEMON
 _BELUGAPOKEMON_TRAINERGENDER.containing_type = _BELUGAPOKEMON
 DESCRIPTOR.message_types_by_name['BelugaPokemon'] = _BELUGAPOKEMON
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
