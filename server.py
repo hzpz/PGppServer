@@ -2,12 +2,11 @@ import sys
 import time
 
 import base64
-import json
 import logging
-import os.path
 from queue import Queue
 from threading import Thread
 from datetime import datetime
+import pickledb
 import requests
 from bottle import post, run, request, response
 
@@ -24,7 +23,7 @@ logging.basicConfig(
 )
 log = logging.getLogger('PGppServer')
 
-seen_raids = {}
+seen_raids = None
 location_provider = None
 publish_queue = Queue()
 
@@ -189,21 +188,21 @@ def is_active(raid):
 
 def seen(raid):
     global seen_raids
-    if raid['gym_id'] not in seen_raids:
+    if not seen_raids.exists(raid['gym_id']):
         return False
 
     if is_active(raid):
-        return seen_raids[raid['gym_id']] == raid['start']
+        return seen_raids.get(raid['gym_id']) == raid['start']
     else:
-        return seen_raids[raid['gym_id']] == raid['spawn']
+        return seen_raids.get(raid['gym_id']) == raid['spawn']
 
 
 def mark_seen(raid):
     global seen_raids
     if is_active(raid):
-        seen_raids.update({raid['gym_id']: raid['start']})
+        seen_raids.set(raid['gym_id'], raid['start'])
     else:
-        seen_raids.update({raid['gym_id']: raid['spawn']})
+        seen_raids.set(raid['gym_id'], raid['spawn'])
 
 
 def parse_raid(gym):
@@ -256,20 +255,14 @@ def send_to_webhook(raid):
 
 
 def load_seen_raids():
-    if not os.path.exists(config.SEEN_RAIDS_FILENAME):
-        return {}
-
-    with open(config.SEEN_RAIDS_FILENAME) as seen_file:
-        seen_json = json.loads(seen_file.read())
-        log.debug('Loaded %s seen raids', len(seen_json))
-        return seen_json
+    seen_db = pickledb.load(config.SEEN_RAIDS_FILENAME, False)
+    log.debug('Loaded %s seen raids', seen_db.totalkeys())
+    return seen_db
 
 
-def save_seen_raids(seen_dict):
-    seen_json = json.dumps(seen_dict, indent=1)
-    with open(config.SEEN_RAIDS_FILENAME, 'w') as seen_file:
-        seen_file.write(seen_json)
-    log.debug('Saved %s seen raids', len(seen_dict))
+def save_seen_raids(seen_db):
+    seen_db.dump()
+    log.debug('Saved %s seen raids', seen_db.totalkeys())
 
 
 if __name__ == '__main__':
