@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.networking.responses',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\nFpogoprotos/networking/responses/platform_client_actions_response.proto\x12\x1fpogoprotos.networking.responses\x1a(pogoprotos/data/login/login_detail.proto\x1a)pogoprotos/enums/notification_state.proto\"\xad\x01\n RegisterPushNotificationResponse\x12X\n\x06result\x18\x01 \x01(\x0e\x32H.pogoprotos.networking.responses.RegisterPushNotificationResponse.Result\"/\n\x06Result\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\r\n\tNO_CHANGE\x10\x02\"\x8d\x01\n UpdateNotificationStatusResponse\x12\x18\n\x10notification_ids\x18\x01 \x03(\t\x12\x1b\n\x13\x63reate_timestamp_ms\x18\x02 \x03(\x03\x12\x32\n\x05state\x18\x03 \x01(\x0e\x32#.pogoprotos.enums.NotificationState\"(\n&OptOutPushNotificationCategoryResponse\"\xaa\x03\n\x16RedeemPasscodeResponse\x12N\n\x06result\x18\x01 \x01(\x0e\x32>.pogoprotos.networking.responses.RedeemPasscodeResponse.Result\x12[\n\racquired_item\x18\x02 \x03(\x0b\x32\x44.pogoprotos.networking.responses.RedeemPasscodeResponse.AcquiredItem\x12\x1c\n\x14\x61\x63quired_items_proto\x18\x03 \x01(\x0c\x12\x10\n\x08passcode\x18\x04 \x01(\t\x1a+\n\x0c\x41\x63quiredItem\x12\x0c\n\x04item\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x03\"\x85\x01\n\x06Result\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x11\n\rNOT_AVAILABLE\x10\x02\x12\x18\n\x14OVER_INVENTORY_LIMIT\x10\x03\x12\x14\n\x10\x41LREADY_REDEEMED\x10\x04\x12 \n\x1cOVER_PLAYER_REDEMPTION_LIMIT\x10\x05\"\xe6\x01\n\x11\x41\x64\x64NewPoiResponse\x12I\n\x06status\x18\x01 \x01(\x0e\x32\x39.pogoprotos.networking.responses.AddNewPoiResponse.Status\x12\x0f\n\x07message\x18\x02 \x03(\t\"u\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x0b\n\x07\x46\x41ILURE\x10\x02\x12\x12\n\x0eINTERNAL_ERROR\x10\x03\x12\x1f\n\x1bTOO_MANY_RECENT_SUBMISSIONS\x10\x04\x12\x11\n\rINVALID_INPUT\x10\x05\"\x80\x03\n\x19ProxySocialActionResponse\x12Q\n\x06status\x18\x01 \x01(\x0e\x32\x41.pogoprotos.networking.responses.ProxySocialActionResponse.Status\x12\x15\n\rassigned_host\x18\x02 \x01(\t\x12\x0f\n\x07payload\x18\x03 \x01(\x0c\"\xe7\x01\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\r\n\tCOMPLETED\x10\x01\x12\x1c\n\x18\x43OMPLETED_AND_REASSIGNED\x10\x02\x12\x14\n\x10\x41\x43TION_NOT_FOUND\x10\x03\x12\x14\n\x10\x41SSIGNMENT_ERROR\x10\x04\x12\x1c\n\x18PROXY_UNAUTHORIZED_ERROR\x10\x05\x12\x12\n\x0eINTERNAL_ERROR\x10\x06\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x07\x12\x11\n\rACCESS_DENIED\x10\x08\x12\x11\n\rTIMEOUT_ERROR\x10\t\x12\x10\n\x0cRATE_LIMITED\x10\n\"\x96\x03\n$ProxySocialSideChannelActionResponse\x12\\\n\x06status\x18\x01 \x01(\x0e\x32L.pogoprotos.networking.responses.ProxySocialSideChannelActionResponse.Status\x12\x15\n\rassigned_host\x18\x02 \x01(\t\x12\x0f\n\x07payload\x18\x03 \x01(\x0c\"\xe7\x01\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\r\n\tCOMPLETED\x10\x01\x12\x1c\n\x18\x43OMPLETED_AND_REASSIGNED\x10\x02\x12\x14\n\x10\x41\x43TION_NOT_FOUND\x10\x03\x12\x14\n\x10\x41SSIGNMENT_ERROR\x10\x04\x12\x1c\n\x18PROXY_UNAUTHORIZED_ERROR\x10\x05\x12\x12\n\x0eINTERNAL_ERROR\x10\x06\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x07\x12\x11\n\rACCESS_DENIED\x10\x08\x12\x11\n\rTIMEOUT_ERROR\x10\t\x12\x10\n\x0cRATE_LIMITED\x10\n\"\xb8\x01\n\x1fGetAvailableSubmissionsResponse\x12\x18\n\x10submissions_left\x18\x01 \x01(\x05\x12\x18\n\x10min_player_level\x18\x02 \x01(\x05\x12\x17\n\x0fhas_valid_email\x18\x03 \x01(\x08\x12\x1a\n\x12is_feature_enabled\x18\x04 \x01(\x08\x12,\n$time_window_for_submissions_limit_ms\x18\x05 \x01(\x03\"\xad\x01\n PushNotificationRegistryResponse\x12X\n\x06result\x18\x01 \x01(\x0e\x32H.pogoprotos.networking.responses.PushNotificationRegistryResponse.Result\"/\n\x06Result\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\r\n\tNO_CHANGE\x10\x02\"\xeb\x01\n\x16\x41\x64\x64LoginActionResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x38\n\x0clogin_detail\x18\x02 \x03(\x0b\x32\".pogoprotos.data.login.LoginDetail\x12N\n\x06status\x18\x03 \x01(\x0e\x32>.pogoprotos.networking.responses.AddLoginActionResponse.Status\"6\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\x10\n\x0c\x41UTH_FAILURE\x10\x01\x12\x0f\n\x0bLOGIN_TAKEN\x10\x02\"\xe7\x01\n\x19RemoveLoginActionResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x38\n\x0clogin_detail\x18\x02 \x03(\x0b\x32\".pogoprotos.data.login.LoginDetail\x12Q\n\x06status\x18\x03 \x01(\x0e\x32\x41.pogoprotos.networking.responses.RemoveLoginActionResponse.Status\",\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\x17\n\x13LOGIN_NOT_REMOVABLE\x10\x01\"\xfa\x01\n\x14SubmitNewPoiResponse\x12L\n\x06status\x18\x01 \x01(\x0e\x32<.pogoprotos.networking.responses.SubmitNewPoiResponse.Status\"\x93\x01\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x0b\n\x07\x46\x41ILURE\x10\x02\x12\x12\n\x0eINTERNAL_ERROR\x10\x03\x12\x1f\n\x1bTOO_MANY_RECENT_SUBMISSIONS\x10\x04\x12\x11\n\rINVALID_INPUT\x10\x05\x12\t\n\x05MINOR\x10\x06\x12\x11\n\rNOT_AVAILABLE\x10\x07\"\x97\x02\n\x1bUploadPoiPhotoByUrlResponse\x12S\n\x06status\x18\x01 \x01(\x0e\x32\x43.pogoprotos.networking.responses.UploadPoiPhotoByUrlResponse.Result\"\xa2\x01\n\x06Result\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x14\n\x10\x46\x45\x41TURE_DISABLED\x10\x02\x12\x14\n\x10\x41LREADY_UPLOADED\x10\x03\x12\x13\n\x0fIMAGE_NOT_FOUND\x10\x04\x12\x11\n\rIMAGE_TOO_BIG\x10\x05\x12\x16\n\x12IMAGE_NOT_SERVABLE\x10\x06\x12\x14\n\x10PORTAL_NOT_FOUND\x10\x07\"k\n\x0cPingResponse\x12\x11\n\tuser_info\x18\x01 \x01(\t\x12\x13\n\x0bserver_info\x18\x02 \x01(\t\x12\x1d\n\x15random_response_bytes\x18\x03 \x01(\t\x12\x14\n\x0creturn_value\x18\x04 \x01(\t\"\xa6\x02\n\x1aReplaceLoginActionResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x38\n\x0clogin_detail\x18\x02 \x03(\x0b\x32\".pogoprotos.data.login.LoginDetail\x12R\n\x06status\x18\x03 \x01(\x0e\x32\x42.pogoprotos.networking.responses.ReplaceLoginActionResponse.Status\"i\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\x10\n\x0c\x41UTH_FAILURE\x10\x01\x12\x0f\n\x0bLOGIN_TAKEN\x10\x02\x12\x16\n\x12LOGIN_ALREADY_HAVE\x10\x03\x12\x19\n\x15LOGIN_NOT_REPLACEABLE\x10\x04\"d\n\x17ListLoginActionResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x38\n\x0clogin_detail\x18\x02 \x03(\x0b\x32\".pogoprotos.data.login.LoginDetailb\x06proto3')
+  serialized_pb=_b('\nFpogoprotos/networking/responses/platform_client_actions_response.proto\x12\x1fpogoprotos.networking.responses\x1a(pogoprotos/data/login/login_detail.proto\x1a)pogoprotos/enums/notification_state.proto\"\xad\x01\n RegisterPushNotificationResponse\x12X\n\x06result\x18\x01 \x01(\x0e\x32H.pogoprotos.networking.responses.RegisterPushNotificationResponse.Result\"/\n\x06Result\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\r\n\tNO_CHANGE\x10\x02\"\x8d\x01\n UpdateNotificationStatusResponse\x12\x18\n\x10notification_ids\x18\x01 \x03(\t\x12\x1b\n\x13\x63reate_timestamp_ms\x18\x02 \x03(\x03\x12\x32\n\x05state\x18\x03 \x01(\x0e\x32#.pogoprotos.enums.NotificationState\"(\n&OptOutPushNotificationCategoryResponse\"\xaa\x03\n\x16RedeemPasscodeResponse\x12N\n\x06result\x18\x01 \x01(\x0e\x32>.pogoprotos.networking.responses.RedeemPasscodeResponse.Result\x12[\n\racquired_item\x18\x02 \x03(\x0b\x32\x44.pogoprotos.networking.responses.RedeemPasscodeResponse.AcquiredItem\x12\x1c\n\x14\x61\x63quired_items_proto\x18\x03 \x01(\x0c\x12\x10\n\x08passcode\x18\x04 \x01(\t\x1a+\n\x0c\x41\x63quiredItem\x12\x0c\n\x04item\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x03\"\x85\x01\n\x06Result\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x11\n\rNOT_AVAILABLE\x10\x02\x12\x18\n\x14OVER_INVENTORY_LIMIT\x10\x03\x12\x14\n\x10\x41LREADY_REDEEMED\x10\x04\x12 \n\x1cOVER_PLAYER_REDEMPTION_LIMIT\x10\x05\"\xe6\x01\n\x11\x41\x64\x64NewPoiResponse\x12I\n\x06status\x18\x01 \x01(\x0e\x32\x39.pogoprotos.networking.responses.AddNewPoiResponse.Status\x12\x0f\n\x07message\x18\x02 \x03(\t\"u\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x0b\n\x07\x46\x41ILURE\x10\x02\x12\x12\n\x0eINTERNAL_ERROR\x10\x03\x12\x1f\n\x1bTOO_MANY_RECENT_SUBMISSIONS\x10\x04\x12\x11\n\rINVALID_INPUT\x10\x05\"\x80\x03\n\x19ProxySocialActionResponse\x12Q\n\x06status\x18\x01 \x01(\x0e\x32\x41.pogoprotos.networking.responses.ProxySocialActionResponse.Status\x12\x15\n\rassigned_host\x18\x02 \x01(\t\x12\x0f\n\x07payload\x18\x03 \x01(\x0c\"\xe7\x01\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\r\n\tCOMPLETED\x10\x01\x12\x1c\n\x18\x43OMPLETED_AND_REASSIGNED\x10\x02\x12\x14\n\x10\x41\x43TION_NOT_FOUND\x10\x03\x12\x14\n\x10\x41SSIGNMENT_ERROR\x10\x04\x12\x1c\n\x18PROXY_UNAUTHORIZED_ERROR\x10\x05\x12\x12\n\x0eINTERNAL_ERROR\x10\x06\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x07\x12\x11\n\rACCESS_DENIED\x10\x08\x12\x11\n\rTIMEOUT_ERROR\x10\t\x12\x10\n\x0cRATE_LIMITED\x10\n\"\x96\x03\n$ProxySocialSideChannelActionResponse\x12\\\n\x06status\x18\x01 \x01(\x0e\x32L.pogoprotos.networking.responses.ProxySocialSideChannelActionResponse.Status\x12\x15\n\rassigned_host\x18\x02 \x01(\t\x12\x0f\n\x07payload\x18\x03 \x01(\x0c\"\xe7\x01\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\r\n\tCOMPLETED\x10\x01\x12\x1c\n\x18\x43OMPLETED_AND_REASSIGNED\x10\x02\x12\x14\n\x10\x41\x43TION_NOT_FOUND\x10\x03\x12\x14\n\x10\x41SSIGNMENT_ERROR\x10\x04\x12\x1c\n\x18PROXY_UNAUTHORIZED_ERROR\x10\x05\x12\x12\n\x0eINTERNAL_ERROR\x10\x06\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x07\x12\x11\n\rACCESS_DENIED\x10\x08\x12\x11\n\rTIMEOUT_ERROR\x10\t\x12\x10\n\x0cRATE_LIMITED\x10\n\"\xdc\x01\n\x1fGetAvailableSubmissionsResponse\x12\x18\n\x10submissions_left\x18\x01 \x01(\x05\x12\x18\n\x10min_player_level\x18\x02 \x01(\x05\x12\x17\n\x0fhas_valid_email\x18\x03 \x01(\x08\x12\x1a\n\x12is_feature_enabled\x18\x04 \x01(\x08\x12,\n$time_window_for_submissions_limit_ms\x18\x05 \x01(\x03\x12\"\n\x1amax_poi_distance_in_meters\x18\x06 \x01(\x05\"\xad\x01\n PushNotificationRegistryResponse\x12X\n\x06result\x18\x01 \x01(\x0e\x32H.pogoprotos.networking.responses.PushNotificationRegistryResponse.Result\"/\n\x06Result\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\r\n\tNO_CHANGE\x10\x02\"\xeb\x01\n\x16\x41\x64\x64LoginActionResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x38\n\x0clogin_detail\x18\x02 \x03(\x0b\x32\".pogoprotos.data.login.LoginDetail\x12N\n\x06status\x18\x03 \x01(\x0e\x32>.pogoprotos.networking.responses.AddLoginActionResponse.Status\"6\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\x10\n\x0c\x41UTH_FAILURE\x10\x01\x12\x0f\n\x0bLOGIN_TAKEN\x10\x02\"\xe7\x01\n\x19RemoveLoginActionResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x38\n\x0clogin_detail\x18\x02 \x03(\x0b\x32\".pogoprotos.data.login.LoginDetail\x12Q\n\x06status\x18\x03 \x01(\x0e\x32\x41.pogoprotos.networking.responses.RemoveLoginActionResponse.Status\",\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\x17\n\x13LOGIN_NOT_REMOVABLE\x10\x01\"\xfa\x01\n\x14SubmitNewPoiResponse\x12L\n\x06status\x18\x01 \x01(\x0e\x32<.pogoprotos.networking.responses.SubmitNewPoiResponse.Status\"\x93\x01\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x0b\n\x07\x46\x41ILURE\x10\x02\x12\x12\n\x0eINTERNAL_ERROR\x10\x03\x12\x1f\n\x1bTOO_MANY_RECENT_SUBMISSIONS\x10\x04\x12\x11\n\rINVALID_INPUT\x10\x05\x12\t\n\x05MINOR\x10\x06\x12\x11\n\rNOT_AVAILABLE\x10\x07\"\x97\x02\n\x1bUploadPoiPhotoByUrlResponse\x12S\n\x06status\x18\x01 \x01(\x0e\x32\x43.pogoprotos.networking.responses.UploadPoiPhotoByUrlResponse.Result\"\xa2\x01\n\x06Result\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x14\n\x10\x46\x45\x41TURE_DISABLED\x10\x02\x12\x14\n\x10\x41LREADY_UPLOADED\x10\x03\x12\x13\n\x0fIMAGE_NOT_FOUND\x10\x04\x12\x11\n\rIMAGE_TOO_BIG\x10\x05\x12\x16\n\x12IMAGE_NOT_SERVABLE\x10\x06\x12\x14\n\x10PORTAL_NOT_FOUND\x10\x07\"k\n\x0cPingResponse\x12\x11\n\tuser_info\x18\x01 \x01(\t\x12\x13\n\x0bserver_info\x18\x02 \x01(\t\x12\x1d\n\x15random_response_bytes\x18\x03 \x01(\t\x12\x14\n\x0creturn_value\x18\x04 \x01(\t\"\xa6\x02\n\x1aReplaceLoginActionResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x38\n\x0clogin_detail\x18\x02 \x03(\x0b\x32\".pogoprotos.data.login.LoginDetail\x12R\n\x06status\x18\x03 \x01(\x0e\x32\x42.pogoprotos.networking.responses.ReplaceLoginActionResponse.Status\"i\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\x10\n\x0c\x41UTH_FAILURE\x10\x01\x12\x0f\n\x0bLOGIN_TAKEN\x10\x02\x12\x16\n\x12LOGIN_ALREADY_HAVE\x10\x03\x12\x19\n\x15LOGIN_NOT_REPLACEABLE\x10\x04\"d\n\x17ListLoginActionResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x38\n\x0clogin_detail\x18\x02 \x03(\x0b\x32\".pogoprotos.data.login.LoginDetailb\x06proto3')
   ,
   dependencies=[pogoprotos_dot_data_dot_login_dot_login__detail__pb2.DESCRIPTOR,pogoprotos_dot_enums_dot_notification__state__pb2.DESCRIPTOR,])
 
@@ -292,8 +292,8 @@ _ADDLOGINACTIONRESPONSE_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2557,
-  serialized_end=2611,
+  serialized_start=2593,
+  serialized_end=2647,
 )
 _sym_db.RegisterEnumDescriptor(_ADDLOGINACTIONRESPONSE_STATUS)
 
@@ -314,8 +314,8 @@ _REMOVELOGINACTIONRESPONSE_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2801,
-  serialized_end=2845,
+  serialized_start=2837,
+  serialized_end=2881,
 )
 _sym_db.RegisterEnumDescriptor(_REMOVELOGINACTIONRESPONSE_STATUS)
 
@@ -360,8 +360,8 @@ _SUBMITNEWPOIRESPONSE_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2951,
-  serialized_end=3098,
+  serialized_start=2987,
+  serialized_end=3134,
 )
 _sym_db.RegisterEnumDescriptor(_SUBMITNEWPOIRESPONSE_STATUS)
 
@@ -406,8 +406,8 @@ _UPLOADPOIPHOTOBYURLRESPONSE_RESULT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3218,
-  serialized_end=3380,
+  serialized_start=3254,
+  serialized_end=3416,
 )
 _sym_db.RegisterEnumDescriptor(_UPLOADPOIPHOTOBYURLRESPONSE_RESULT)
 
@@ -440,8 +440,8 @@ _REPLACELOGINACTIONRESPONSE_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3681,
-  serialized_end=3786,
+  serialized_start=3717,
+  serialized_end=3822,
 )
 _sym_db.RegisterEnumDescriptor(_REPLACELOGINACTIONRESPONSE_STATUS)
 
@@ -810,6 +810,13 @@ _GETAVAILABLESUBMISSIONSRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='max_poi_distance_in_meters', full_name='pogoprotos.networking.responses.GetAvailableSubmissionsResponse.max_poi_distance_in_meters', index=5,
+      number=6, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -823,7 +830,7 @@ _GETAVAILABLESUBMISSIONSRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=2013,
-  serialized_end=2197,
+  serialized_end=2233,
 )
 
 
@@ -854,8 +861,8 @@ _PUSHNOTIFICATIONREGISTRYRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2200,
-  serialized_end=2373,
+  serialized_start=2236,
+  serialized_end=2409,
 )
 
 
@@ -900,8 +907,8 @@ _ADDLOGINACTIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2376,
-  serialized_end=2611,
+  serialized_start=2412,
+  serialized_end=2647,
 )
 
 
@@ -946,8 +953,8 @@ _REMOVELOGINACTIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2614,
-  serialized_end=2845,
+  serialized_start=2650,
+  serialized_end=2881,
 )
 
 
@@ -978,8 +985,8 @@ _SUBMITNEWPOIRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2848,
-  serialized_end=3098,
+  serialized_start=2884,
+  serialized_end=3134,
 )
 
 
@@ -1010,8 +1017,8 @@ _UPLOADPOIPHOTOBYURLRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3101,
-  serialized_end=3380,
+  serialized_start=3137,
+  serialized_end=3416,
 )
 
 
@@ -1062,8 +1069,8 @@ _PINGRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3382,
-  serialized_end=3489,
+  serialized_start=3418,
+  serialized_end=3525,
 )
 
 
@@ -1108,8 +1115,8 @@ _REPLACELOGINACTIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3492,
-  serialized_end=3786,
+  serialized_start=3528,
+  serialized_end=3822,
 )
 
 
@@ -1146,8 +1153,8 @@ _LISTLOGINACTIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3788,
-  serialized_end=3888,
+  serialized_start=3824,
+  serialized_end=3924,
 )
 
 _REGISTERPUSHNOTIFICATIONRESPONSE.fields_by_name['result'].enum_type = _REGISTERPUSHNOTIFICATIONRESPONSE_RESULT

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.data.fitness',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n,pogoprotos/data/fitness/fitness_sample.proto\x12\x17pogoprotos.data.fitness\"\xfb\x03\n\rFitnessSample\x12M\n\x0bsample_type\x18\x01 \x01(\x0e\x32\x38.pogoprotos.data.fitness.FitnessSample.FitnessSampleType\x12!\n\x19sample_start_timestamp_ms\x18\x02 \x01(\x03\x12\x1f\n\x17sample_end_timestamp_ms\x18\x03 \x01(\x03\x12\r\n\x05value\x18\x04 \x01(\x01\x12M\n\x0bsource_type\x18\x05 \x01(\x0e\x32\x38.pogoprotos.data.fitness.FitnessSample.FitnessSourceType\"\xb2\x01\n\x11\x46itnessSampleType\x12\x10\n\x0cSAMPLE_UNSET\x10\x00\x12\t\n\x05STEPS\x10\x01\x12\x1b\n\x17WALKING_DISTANCE_METERS\x10\x02\x12\x1e\n\x1aWHEELCHAIR_DISTANCE_METERS\x10\x03\x12\x12\n\x0e\x43\x41LORIES_KCALS\x10\x04\x12\x19\n\x15WHEELCHAIR_PUSH_COUNT\x10\x05\x12\x14\n\x10\x45XERCISE_TIME_MI\x10\x06\"D\n\x11\x46itnessSourceType\x12\x10\n\x0cSOURCE_UNSET\x10\x00\x12\r\n\tHEALTHKIT\x10\x01\x12\x0e\n\nGOOGLE_FIT\x10\x02\x62\x06proto3')
+  serialized_pb=_b('\n,pogoprotos/data/fitness/fitness_sample.proto\x12\x17pogoprotos.data.fitness\"\x95\x04\n\rFitnessSample\x12M\n\x0bsample_type\x18\x01 \x01(\x0e\x32\x38.pogoprotos.data.fitness.FitnessSample.FitnessSampleType\x12!\n\x19sample_start_timestamp_ms\x18\x02 \x01(\x03\x12\x1f\n\x17sample_end_timestamp_ms\x18\x03 \x01(\x03\x12\r\n\x05value\x18\x04 \x01(\x01\x12M\n\x0bsource_type\x18\x05 \x01(\x0e\x32\x38.pogoprotos.data.fitness.FitnessSample.FitnessSourceType\"\xb2\x01\n\x11\x46itnessSampleType\x12\x10\n\x0cSAMPLE_UNSET\x10\x00\x12\t\n\x05STEPS\x10\x01\x12\x1b\n\x17WALKING_DISTANCE_METERS\x10\x02\x12\x1e\n\x1aWHEELCHAIR_DISTANCE_METERS\x10\x03\x12\x12\n\x0e\x43\x41LORIES_KCALS\x10\x04\x12\x19\n\x15WHEELCHAIR_PUSH_COUNT\x10\x05\x12\x14\n\x10\x45XERCISE_TIME_MI\x10\x06\"^\n\x11\x46itnessSourceType\x12\x10\n\x0cSOURCE_UNSET\x10\x00\x12\r\n\tHEALTHKIT\x10\x01\x12\x0e\n\nGOOGLE_FIT\x10\x02\x12\x0f\n\x0b\x41PPLE_WATCH\x10\x03\x12\x07\n\x03GPS\x10\x04\x62\x06proto3')
 )
 
 
@@ -84,11 +84,19 @@ _FITNESSSAMPLE_FITNESSSOURCETYPE = _descriptor.EnumDescriptor(
       name='GOOGLE_FIT', index=2, number=2,
       serialized_options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='APPLE_WATCH', index=3, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='GPS', index=4, number=4,
+      serialized_options=None,
+      type=None),
   ],
   containing_type=None,
   serialized_options=None,
   serialized_start=513,
-  serialized_end=581,
+  serialized_end=607,
 )
 _sym_db.RegisterEnumDescriptor(_FITNESSSAMPLE_FITNESSSOURCETYPE)
 
@@ -150,7 +158,7 @@ _FITNESSSAMPLE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=74,
-  serialized_end=581,
+  serialized_end=607,
 )
 
 _FITNESSSAMPLE.fields_by_name['sample_type'].enum_type = _FITNESSSAMPLE_FITNESSSAMPLETYPE

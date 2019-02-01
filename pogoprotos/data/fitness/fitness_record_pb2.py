@@ -14,6 +14,7 @@ _sym_db = _symbol_database.Default()
 
 from pogoprotos.data.fitness import fitness_sample_pb2 as pogoprotos_dot_data_dot_fitness_dot_fitness__sample__pb2
 from pogoprotos.data.fitness import fitness_stats_pb2 as pogoprotos_dot_data_dot_fitness_dot_fitness__stats__pb2
+from pogoprotos.data.fitness import fitness_metrics_report_history_pb2 as pogoprotos_dot_data_dot_fitness_dot_fitness__metrics__report__history__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -21,9 +22,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.data.fitness',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n,pogoprotos/data/fitness/fitness_record.proto\x12\x17pogoprotos.data.fitness\x1a,pogoprotos/data/fitness/fitness_sample.proto\x1a+pogoprotos/data/fitness/fitness_stats.proto\"\xb1\x01\n\rFitnessRecord\x12;\n\x0braw_samples\x18\x02 \x03(\x0b\x32&.pogoprotos.data.fitness.FitnessSample\x12%\n\x1dlast_aggregation_timestamp_ms\x18\x03 \x01(\x03\x12<\n\rfitness_stats\x18\x04 \x01(\x0b\x32%.pogoprotos.data.fitness.FitnessStatsb\x06proto3')
+  serialized_pb=_b('\n,pogoprotos/data/fitness/fitness_record.proto\x12\x17pogoprotos.data.fitness\x1a,pogoprotos/data/fitness/fitness_sample.proto\x1a+pogoprotos/data/fitness/fitness_stats.proto\x1a<pogoprotos/data/fitness/fitness_metrics_report_history.proto\"\xff\x01\n\rFitnessRecord\x12;\n\x0braw_samples\x18\x02 \x03(\x0b\x32&.pogoprotos.data.fitness.FitnessSample\x12%\n\x1dlast_aggregation_timestamp_ms\x18\x03 \x01(\x03\x12<\n\rfitness_stats\x18\x04 \x01(\x0b\x32%.pogoprotos.data.fitness.FitnessStats\x12L\n\x0ereport_history\x18\x05 \x01(\x0b\x32\x34.pogoprotos.data.fitness.FitnessMetricsReportHistoryb\x06proto3')
   ,
-  dependencies=[pogoprotos_dot_data_dot_fitness_dot_fitness__sample__pb2.DESCRIPTOR,pogoprotos_dot_data_dot_fitness_dot_fitness__stats__pb2.DESCRIPTOR,])
+  dependencies=[pogoprotos_dot_data_dot_fitness_dot_fitness__sample__pb2.DESCRIPTOR,pogoprotos_dot_data_dot_fitness_dot_fitness__stats__pb2.DESCRIPTOR,pogoprotos_dot_data_dot_fitness_dot_fitness__metrics__report__history__pb2.DESCRIPTOR,])
 
 
 
@@ -56,6 +57,13 @@ _FITNESSRECORD = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='report_history', full_name='pogoprotos.data.fitness.FitnessRecord.report_history', index=3,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -68,12 +76,13 @@ _FITNESSRECORD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=165,
-  serialized_end=342,
+  serialized_start=227,
+  serialized_end=482,
 )
 
 _FITNESSRECORD.fields_by_name['raw_samples'].message_type = pogoprotos_dot_data_dot_fitness_dot_fitness__sample__pb2._FITNESSSAMPLE
 _FITNESSRECORD.fields_by_name['fitness_stats'].message_type = pogoprotos_dot_data_dot_fitness_dot_fitness__stats__pb2._FITNESSSTATS
+_FITNESSRECORD.fields_by_name['report_history'].message_type = pogoprotos_dot_data_dot_fitness_dot_fitness__metrics__report__history__pb2._FITNESSMETRICSREPORTHISTORY
 DESCRIPTOR.message_types_by_name['FitnessRecord'] = _FITNESSRECORD
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 

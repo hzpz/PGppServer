@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.data.fitness',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n+pogoprotos/data/fitness/fitness_stats.proto\x12\x17pogoprotos.data.fitness\x1a-pogoprotos/data/fitness/fitness_metrics.proto\"\xad\x01\n\x0c\x46itnessStats\x12%\n\x1dlast_accumulated_timestamp_ms\x18\x01 \x01(\x03\x12<\n\x0b\x61\x63\x63umulated\x18\x02 \x01(\x0b\x32\'.pogoprotos.data.fitness.FitnessMetrics\x12\x38\n\x07pending\x18\x03 \x01(\x0b\x32\'.pogoprotos.data.fitness.FitnessMetricsb\x06proto3')
+  serialized_pb=_b('\n+pogoprotos/data/fitness/fitness_stats.proto\x12\x17pogoprotos.data.fitness\x1a-pogoprotos/data/fitness/fitness_metrics.proto\"\xeb\x01\n\x0c\x46itnessStats\x12%\n\x1dlast_accumulated_timestamp_ms\x18\x01 \x01(\x03\x12<\n\x0b\x61\x63\x63umulated\x18\x02 \x01(\x0b\x32\'.pogoprotos.data.fitness.FitnessMetrics\x12\x38\n\x07pending\x18\x03 \x01(\x0b\x32\'.pogoprotos.data.fitness.FitnessMetrics\x12\x1e\n\x16player_initial_walk_km\x18\x04 \x01(\x01\x12\x1c\n\x14player_total_walk_km\x18\x05 \x01(\x01\x62\x06proto3')
   ,
   dependencies=[pogoprotos_dot_data_dot_fitness_dot_fitness__metrics__pb2.DESCRIPTOR,])
 
@@ -55,6 +55,20 @@ _FITNESSSTATS = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='player_initial_walk_km', full_name='pogoprotos.data.fitness.FitnessStats.player_initial_walk_km', index=3,
+      number=4, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='player_total_walk_km', full_name='pogoprotos.data.fitness.FitnessStats.player_total_walk_km', index=4,
+      number=5, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -68,7 +82,7 @@ _FITNESSSTATS = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=120,
-  serialized_end=293,
+  serialized_end=355,
 )
 
 _FITNESSSTATS.fields_by_name['accumulated'].message_type = pogoprotos_dot_data_dot_fitness_dot_fitness__metrics__pb2._FITNESSMETRICS

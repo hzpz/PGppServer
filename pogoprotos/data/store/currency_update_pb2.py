@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.data.store',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n+pogoprotos/data/store/currency_update.proto\x12\x15pogoprotos.data.store\"y\n\x0e\x43urrencyUpdate\x12\x15\n\rcurrency_name\x18\x01 \x01(\t\x12\x16\n\x0e\x63urrency_delta\x18\x02 \x01(\x05\x12\x18\n\x10\x63urrency_balance\x18\x03 \x01(\x05\x12\x1e\n\x16\x66iat_purchased_balance\x18\x04 \x01(\x05\x62\x06proto3')
+  serialized_pb=_b('\n+pogoprotos/data/store/currency_update.proto\x12\x15pogoprotos.data.store\"Y\n\x0e\x43urrencyUpdate\x12\x15\n\rcurrency_name\x18\x01 \x01(\t\x12\x16\n\x0e\x63urrency_delta\x18\x02 \x01(\x05\x12\x18\n\x10\x63urrency_balance\x18\x03 \x01(\x05\x62\x06proto3')
 )
 
 
@@ -53,13 +53,6 @@ _CURRENCYUPDATE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='fiat_purchased_balance', full_name='pogoprotos.data.store.CurrencyUpdate.fiat_purchased_balance', index=3,
-      number=4, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -73,7 +66,7 @@ _CURRENCYUPDATE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=70,
-  serialized_end=191,
+  serialized_end=159,
 )
 
 DESCRIPTOR.message_types_by_name['CurrencyUpdate'] = _CURRENCYUPDATE

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.data.combat',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n.pogoprotos/data/combat/combat_move_buffs.proto\x12\x16pogoprotos.data.combat\"\xbb\x01\n\x0f\x43ombatMoveBuffs\x12)\n!attacker_attack_stat_stage_change\x18\x01 \x01(\x05\x12*\n\"attacker_defense_stat_stage_change\x18\x02 \x01(\x05\x12\'\n\x1ftarget_attack_stat_stage_change\x18\x03 \x01(\x05\x12(\n target_defense_stat_stage_change\x18\x04 \x01(\x05\x62\x06proto3')
+  serialized_pb=_b('\n.pogoprotos/data/combat/combat_move_buffs.proto\x12\x16pogoprotos.data.combat\"\xdb\x01\n\x0f\x43ombatMoveBuffs\x12)\n!attacker_attack_stat_stage_change\x18\x01 \x01(\x05\x12*\n\"attacker_defense_stat_stage_change\x18\x02 \x01(\x05\x12\'\n\x1ftarget_attack_stat_stage_change\x18\x03 \x01(\x05\x12(\n target_defense_stat_stage_change\x18\x04 \x01(\x05\x12\x1e\n\x16\x62uff_activation_chance\x18\x05 \x01(\x02\x62\x06proto3')
 )
 
 
@@ -60,6 +60,13 @@ _COMBATMOVEBUFFS = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='buff_activation_chance', full_name='pogoprotos.data.combat.CombatMoveBuffs.buff_activation_chance', index=4,
+      number=5, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -73,7 +80,7 @@ _COMBATMOVEBUFFS = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=75,
-  serialized_end=262,
+  serialized_end=294,
 )
 
 DESCRIPTOR.message_types_by_name['CombatMoveBuffs'] = _COMBATMOVEBUFFS

@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.networking.responses',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\nApogoprotos/networking/responses/get_fitness_report_response.proto\x12\x1fpogoprotos.networking.responses\x1a,pogoprotos/data/fitness/fitness_report.proto\"\xf4\x02\n\x18GetFitnessReportResponse\x12P\n\x06status\x18\x01 \x01(\x0e\x32@.pogoprotos.networking.responses.GetFitnessReportResponse.Status\x12=\n\rdaily_reports\x18\x02 \x03(\x0b\x32&.pogoprotos.data.fitness.FitnessReport\x12>\n\x0eweekly_reports\x18\x03 \x03(\x0b\x32&.pogoprotos.data.fitness.FitnessReport\"\x86\x01\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x1a\n\x16\x45RROR_PLAYER_NOT_FOUND\x10\x02\x12\x1b\n\x17\x45RROR_RECORDS_NOT_FOUND\x10\x03\x12\x18\n\x14\x45RROR_INVALID_WINDOW\x10\x04\x12\x11\n\rERROR_UNKNOWN\x10\x05\x62\x06proto3')
+  serialized_pb=_b('\nApogoprotos/networking/responses/get_fitness_report_response.proto\x12\x1fpogoprotos.networking.responses\x1a,pogoprotos/data/fitness/fitness_report.proto\"\xa2\x03\n\x18GetFitnessReportResponse\x12P\n\x06status\x18\x01 \x01(\x0e\x32@.pogoprotos.networking.responses.GetFitnessReportResponse.Status\x12=\n\rdaily_reports\x18\x02 \x03(\x0b\x32&.pogoprotos.data.fitness.FitnessReport\x12>\n\x0eweekly_reports\x18\x03 \x03(\x0b\x32&.pogoprotos.data.fitness.FitnessReport\x12,\n$week_reset_timestamp_since_monday_ms\x18\x04 \x01(\x03\"\x86\x01\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x1a\n\x16\x45RROR_PLAYER_NOT_FOUND\x10\x02\x12\x1b\n\x17\x45RROR_RECORDS_NOT_FOUND\x10\x03\x12\x18\n\x14\x45RROR_INVALID_WINDOW\x10\x04\x12\x11\n\rERROR_UNKNOWN\x10\x05\x62\x06proto3')
   ,
   dependencies=[pogoprotos_dot_data_dot_fitness_dot_fitness__report__pb2.DESCRIPTOR,])
 
@@ -59,8 +59,8 @@ _GETFITNESSREPORTRESPONSE_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=387,
-  serialized_end=521,
+  serialized_start=433,
+  serialized_end=567,
 )
 _sym_db.RegisterEnumDescriptor(_GETFITNESSREPORTRESPONSE_STATUS)
 
@@ -93,6 +93,13 @@ _GETFITNESSREPORTRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='week_reset_timestamp_since_monday_ms', full_name='pogoprotos.networking.responses.GetFitnessReportResponse.week_reset_timestamp_since_monday_ms', index=3,
+      number=4, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -107,7 +114,7 @@ _GETFITNESSREPORTRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=149,
-  serialized_end=521,
+  serialized_end=567,
 )
 
 _GETFITNESSREPORTRESPONSE.fields_by_name['status'].enum_type = _GETFITNESSREPORTRESPONSE_STATUS
