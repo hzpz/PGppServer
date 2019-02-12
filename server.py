@@ -1,6 +1,6 @@
 import sys
-import time
 
+import time
 import base64
 import logging
 from queue import Queue
@@ -8,7 +8,7 @@ from threading import Thread
 from datetime import datetime
 import pickledb
 import requests
-from bottle import post, run, request, response
+from bottle import get, post, run, request, response
 
 import config
 from location_provider import LocationProvider, SizeExceededError
@@ -28,16 +28,15 @@ location_provider = None
 publish_queue = Queue()
 
 
-@post('/loc')
+@get('/loc')
 def loc():
     global location_provider
-    loc_data = request.json
 
-    if not loc_data:
-        log.error('Body was empty or invalid: %s', request.body.read())
-        return http_400('Body was empty or invalid')
+    if not request.query.uuid:
+        log.error('Query was empty or invalid: %s', request.query_string)
+        return http_400('Query was empty or invalid')
 
-    device_uuid = loc_data.get('uuid')
+    device_uuid = request.query.uuid
     try:
         location = location_provider[device_uuid]
     except SizeExceededError:
