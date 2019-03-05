@@ -1,6 +1,6 @@
 import logging
 
-HOST = 'localhost'
+HOST = '0.0.0.0'
 PORT = 7477
 MIN_RAID_LEVEL = 1
 WEBHOOK_URL = 'http://localhost:4000'
