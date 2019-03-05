@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.enums',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n%pogoprotos/enums/tutorial_state.proto\x12\x10pogoprotos.enums*\xea\x04\n\rTutorialState\x12\x10\n\x0cLEGAL_SCREEN\x10\x00\x12\x14\n\x10\x41VATAR_SELECTION\x10\x01\x12\x14\n\x10\x41\x43\x43OUNT_CREATION\x10\x02\x12\x13\n\x0fPOKEMON_CAPTURE\x10\x03\x12\x12\n\x0eNAME_SELECTION\x10\x04\x12\x11\n\rPOKEMON_BERRY\x10\x05\x12\x1b\n\x17USE_ITEM_TUTORIAL_STATE\x10\x06\x12\"\n\x1e\x46IRST_TIME_EXPERIENCE_COMPLETE\x10\x07\x12\x15\n\x11POKESTOP_TUTORIAL\x10\x08\x12\x10\n\x0cGYM_TUTORIAL\x10\t\x12\x1c\n\x18\x43HALLENGE_QUEST_TUTORIAL\x10\n\x12\x1f\n\x1bPRIVACY_POLICY_CONFIRMATION\x10\x0b\x12\x14\n\x10TRADING_TUTORIAL\x10\x0c\x12\x1b\n\x17POI_SUBMISSION_TUTORIAL\x10\r\x12\x15\n\x11V1_START_TUTORIAL\x10\x0e\x12\x15\n\x11V2_START_TUTORIAL\x10\x0f\x12\x18\n\x14V2_CUSTOMIZED_AVATAR\x10\x10\x12\x18\n\x14V2_CAUGHT_FIRST_WILD\x10\x11\x12 \n\x1cV2_FINISHED_TUTORIAL_CATCHES\x10\x12\x12\x15\n\x11V2_NAME_SELECTION\x10\x13\x12\x10\n\x0cV2_EGG_GIVEN\x10\x14\x12\x19\n\x15V2_START_EGG_TUTORIAL\x10\x15\x12\x1d\n\x19V2_COMPLETED_EGG_TUTORIAL\x10\x16\x12\x1c\n\x18STARTER_POKEMON_CAPTURED\x10\x18\x62\x06proto3')
+  serialized_pb=_b('\n%pogoprotos/enums/tutorial_state.proto\x12\x10pogoprotos.enums*\xdc\x05\n\rTutorialState\x12\x10\n\x0cLEGAL_SCREEN\x10\x00\x12\x14\n\x10\x41VATAR_SELECTION\x10\x01\x12\x14\n\x10\x41\x43\x43OUNT_CREATION\x10\x02\x12\x13\n\x0fPOKEMON_CAPTURE\x10\x03\x12\x12\n\x0eNAME_SELECTION\x10\x04\x12\x11\n\rPOKEMON_BERRY\x10\x05\x12\x1b\n\x17USE_ITEM_TUTORIAL_STATE\x10\x06\x12\"\n\x1e\x46IRST_TIME_EXPERIENCE_COMPLETE\x10\x07\x12\x15\n\x11POKESTOP_TUTORIAL\x10\x08\x12\x10\n\x0cGYM_TUTORIAL\x10\t\x12\x1c\n\x18\x43HALLENGE_QUEST_TUTORIAL\x10\n\x12\x1f\n\x1bPRIVACY_POLICY_CONFIRMATION\x10\x0b\x12\x14\n\x10TRADING_TUTORIAL\x10\x0c\x12\x1b\n\x17POI_SUBMISSION_TUTORIAL\x10\r\x12\x15\n\x11V1_START_TUTORIAL\x10\x0e\x12\x15\n\x11V2_START_TUTORIAL\x10\x0f\x12\x18\n\x14V2_CUSTOMIZED_AVATAR\x10\x10\x12\x18\n\x14V2_CAUGHT_FIRST_WILD\x10\x11\x12 \n\x1cV2_FINISHED_TUTORIAL_CATCHES\x10\x12\x12\x15\n\x11V2_NAME_SELECTION\x10\x13\x12\x10\n\x0cV2_EGG_GIVEN\x10\x14\x12\x19\n\x15V2_START_EGG_TUTORIAL\x10\x15\x12\x1d\n\x19V2_COMPLETED_EGG_TUTORIAL\x10\x16\x12\x15\n\x11\x41R_PHOTO_TUTORIAL\x10\x17\x12\x1c\n\x18STARTER_POKEMON_CAPTURED\x10\x18\x12\x1e\n\x1a\x41R_PHOTO_FIRST_TIME_DIALOG\x10\x19\x12\x1d\n\x19\x41R_CLASSIC_PHOTO_TUTORIAL\x10\x1a\x12\x1a\n\x16\x41R_PLUS_PHOTO_TUTORIAL\x10\x1b\x62\x06proto3')
 )
 
 _TUTORIALSTATE = _descriptor.EnumDescriptor(
@@ -122,14 +122,30 @@ _TUTORIALSTATE = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='STARTER_POKEMON_CAPTURED', index=23, number=24,
+      name='AR_PHOTO_TUTORIAL', index=23, number=23,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='STARTER_POKEMON_CAPTURED', index=24, number=24,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='AR_PHOTO_FIRST_TIME_DIALOG', index=25, number=25,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='AR_CLASSIC_PHOTO_TUTORIAL', index=26, number=26,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='AR_PLUS_PHOTO_TUTORIAL', index=27, number=27,
       serialized_options=None,
       type=None),
   ],
   containing_type=None,
   serialized_options=None,
   serialized_start=60,
-  serialized_end=678,
+  serialized_end=792,
 )
 _sym_db.RegisterEnumDescriptor(_TUTORIALSTATE)
 
@@ -157,7 +173,11 @@ V2_NAME_SELECTION = 19
 V2_EGG_GIVEN = 20
 V2_START_EGG_TUTORIAL = 21
 V2_COMPLETED_EGG_TUTORIAL = 22
+AR_PHOTO_TUTORIAL = 23
 STARTER_POKEMON_CAPTURED = 24
+AR_PHOTO_FIRST_TIME_DIALOG = 25
+AR_CLASSIC_PHOTO_TUTORIAL = 26
+AR_PLUS_PHOTO_TUTORIAL = 27
 
 
 DESCRIPTOR.enum_types_by_name['TutorialState'] = _TUTORIALSTATE

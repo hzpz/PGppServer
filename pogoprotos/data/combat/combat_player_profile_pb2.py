@@ -14,6 +14,7 @@ _sym_db = _symbol_database.Default()
 
 from pogoprotos.data.player import player_public_profile_pb2 as pogoprotos_dot_data_dot_player_dot_player__public__profile__pb2
 from pogoprotos.data import location_pb2 as pogoprotos_dot_data_dot_location__pb2
+from pogoprotos.data.combat import combat_player_preferences_pb2 as pogoprotos_dot_data_dot_combat_dot_combat__player__preferences__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -21,9 +22,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.data.combat',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n2pogoprotos/data/combat/combat_player_profile.proto\x12\x16pogoprotos.data.combat\x1a\x32pogoprotos/data/player/player_public_profile.proto\x1a\x1epogoprotos/data/location.proto\"\xd7\x01\n\x13\x43ombatPlayerProfile\x12\x11\n\tplayer_id\x18\x01 \x01(\t\x12\x43\n\x0epublic_profile\x18\x02 \x01(\x0b\x32+.pogoprotos.data.player.PlayerPublicProfile\x12!\n\x19\x63ombat_league_template_id\x18\x03 \x03(\t\x12\x18\n\x10\x62uddy_pokemon_id\x18\x04 \x01(\x06\x12+\n\x08location\x18\x05 \x01(\x0b\x32\x19.pogoprotos.data.Locationb\x06proto3')
+  serialized_pb=_b('\n2pogoprotos/data/combat/combat_player_profile.proto\x12\x16pogoprotos.data.combat\x1a\x32pogoprotos/data/player/player_public_profile.proto\x1a\x1epogoprotos/data/location.proto\x1a\x36pogoprotos/data/combat/combat_player_preferences.proto\"\xab\x02\n\x13\x43ombatPlayerProfile\x12\x11\n\tplayer_id\x18\x01 \x01(\t\x12\x43\n\x0epublic_profile\x18\x02 \x01(\x0b\x32+.pogoprotos.data.player.PlayerPublicProfile\x12!\n\x19\x63ombat_league_template_id\x18\x03 \x03(\t\x12\x18\n\x10\x62uddy_pokemon_id\x18\x04 \x01(\x06\x12+\n\x08location\x18\x05 \x01(\x0b\x32\x19.pogoprotos.data.Location\x12R\n\x19\x63ombat_player_preferences\x18\x06 \x01(\x0b\x32/.pogoprotos.data.combat.CombatPlayerPreferencesb\x06proto3')
   ,
-  dependencies=[pogoprotos_dot_data_dot_player_dot_player__public__profile__pb2.DESCRIPTOR,pogoprotos_dot_data_dot_location__pb2.DESCRIPTOR,])
+  dependencies=[pogoprotos_dot_data_dot_player_dot_player__public__profile__pb2.DESCRIPTOR,pogoprotos_dot_data_dot_location__pb2.DESCRIPTOR,pogoprotos_dot_data_dot_combat_dot_combat__player__preferences__pb2.DESCRIPTOR,])
 
 
 
@@ -70,6 +71,13 @@ _COMBATPLAYERPROFILE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='combat_player_preferences', full_name='pogoprotos.data.combat.CombatPlayerProfile.combat_player_preferences', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -82,12 +90,13 @@ _COMBATPLAYERPROFILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=163,
-  serialized_end=378,
+  serialized_start=219,
+  serialized_end=518,
 )
 
 _COMBATPLAYERPROFILE.fields_by_name['public_profile'].message_type = pogoprotos_dot_data_dot_player_dot_player__public__profile__pb2._PLAYERPUBLICPROFILE
 _COMBATPLAYERPROFILE.fields_by_name['location'].message_type = pogoprotos_dot_data_dot_location__pb2._LOCATION
+_COMBATPLAYERPROFILE.fields_by_name['combat_player_preferences'].message_type = pogoprotos_dot_data_dot_combat_dot_combat__player__preferences__pb2._COMBATPLAYERPREFERENCES
 DESCRIPTOR.message_types_by_name['CombatPlayerProfile'] = _COMBATPLAYERPROFILE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
