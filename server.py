@@ -268,7 +268,7 @@ if __name__ == '__main__':
     log.info('Starting PGppServer...')
     try:
         location_provider = LocationProvider(config.LOCATIONS_CSV_FILENAME,
-                                             config.TELEPORT_DELAY_MINUTES * 60)
+                                             config.TELEPORT_DELAY_SECONDS)
         publish_thread = Thread(target=publish_raids)
         publish_thread.start()
         seen_raids = load_seen_raids()
