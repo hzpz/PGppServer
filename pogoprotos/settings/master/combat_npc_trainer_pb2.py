@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.settings.master',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n3pogoprotos/settings/master/combat_npc_trainer.proto\x12\x1apogoprotos.settings.master\x1a*pogoprotos/data/player/player_avatar.proto\x1a!pogoprotos/data/npc_pokemon.proto\"\xbd\x02\n\x10\x43ombatNpcTrainer\x12\x14\n\x0ctrainer_name\x18\x01 \x01(\t\x12!\n\x19\x63ombat_league_template_id\x18\x02 \x01(\t\x12\x1d\n\x15\x63ombat_personality_id\x18\x03 \x01(\t\x12\x19\n\x11win_loot_table_id\x18\x04 \x01(\t\x12\x1a\n\x12lose_loot_table_id\x18\x05 \x01(\t\x12\x34\n\x06\x61vatar\x18\x07 \x01(\x0b\x32$.pogoprotos.data.player.PlayerAvatar\x12\x36\n\x11\x61vailable_pokemon\x18\x08 \x03(\x0b\x32\x1b.pogoprotos.data.NpcPokemon\x12\x15\n\rtrainer_title\x18\t \x01(\t\x12\x15\n\rtrainer_quote\x18\n \x01(\tb\x06proto3')
+  serialized_pb=_b('\n3pogoprotos/settings/master/combat_npc_trainer.proto\x12\x1apogoprotos.settings.master\x1a*pogoprotos/data/player/player_avatar.proto\x1a!pogoprotos/data/npc_pokemon.proto\"\xe5\x02\n\x10\x43ombatNpcTrainer\x12\x14\n\x0ctrainer_name\x18\x01 \x01(\t\x12!\n\x19\x63ombat_league_template_id\x18\x02 \x01(\t\x12\x1d\n\x15\x63ombat_personality_id\x18\x03 \x01(\t\x12\x19\n\x11win_loot_table_id\x18\x04 \x01(\t\x12\x1a\n\x12lose_loot_table_id\x18\x05 \x01(\t\x12\x34\n\x06\x61vatar\x18\x07 \x01(\x0b\x32$.pogoprotos.data.player.PlayerAvatar\x12\x36\n\x11\x61vailable_pokemon\x18\x08 \x03(\x0b\x32\x1b.pogoprotos.data.NpcPokemon\x12\x15\n\rtrainer_title\x18\t \x01(\t\x12\x15\n\rtrainer_quote\x18\n \x01(\t\x12\x10\n\x08icon_url\x18\x0b \x01(\t\x12\x14\n\x0c\x62\x61\x63kdrop_url\x18\x0c \x01(\tb\x06proto3')
   ,
   dependencies=[pogoprotos_dot_data_dot_player_dot_player__avatar__pb2.DESCRIPTOR,pogoprotos_dot_data_dot_npc__pokemon__pb2.DESCRIPTOR,])
 
@@ -98,6 +98,20 @@ _COMBATNPCTRAINER = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='icon_url', full_name='pogoprotos.settings.master.CombatNpcTrainer.icon_url', index=9,
+      number=11, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='backdrop_url', full_name='pogoprotos.settings.master.CombatNpcTrainer.backdrop_url', index=10,
+      number=12, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -111,7 +125,7 @@ _COMBATNPCTRAINER = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=163,
-  serialized_end=480,
+  serialized_end=520,
 )
 
 _COMBATNPCTRAINER.fields_by_name['avatar'].message_type = pogoprotos_dot_data_dot_player_dot_player__avatar__pb2._PLAYERAVATAR

@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.networking.responses',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n?pogoprotos/networking/responses/get_buddy_walked_response.proto\x12\x1fpogoprotos.networking.responses\x1a(pogoprotos/enums/pokemon_family_id.proto\"\x97\x01\n\x16GetBuddyWalkedResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12:\n\x0f\x66\x61mily_candy_id\x18\x02 \x01(\x0e\x32!.pogoprotos.enums.PokemonFamilyId\x12\x1a\n\x12\x63\x61ndy_earned_count\x18\x03 \x01(\x05\x12\x14\n\x0ckm_remaining\x18\x04 \x01(\x01\x62\x06proto3')
+  serialized_pb=_b('\n?pogoprotos/networking/responses/get_buddy_walked_response.proto\x12\x1fpogoprotos.networking.responses\x1a(pogoprotos/enums/pokemon_family_id.proto\"\xb0\x01\n\x16GetBuddyWalkedResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12:\n\x0f\x66\x61mily_candy_id\x18\x02 \x01(\x0e\x32!.pogoprotos.enums.PokemonFamilyId\x12\x1a\n\x12\x63\x61ndy_earned_count\x18\x03 \x01(\x05\x12\x14\n\x0ckm_remaining\x18\x04 \x01(\x01\x12\x17\n\x0flast_km_awarded\x18\x05 \x01(\x01\x62\x06proto3')
   ,
   dependencies=[pogoprotos_dot_enums_dot_pokemon__family__id__pb2.DESCRIPTOR,])
 
@@ -62,6 +62,13 @@ _GETBUDDYWALKEDRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='last_km_awarded', full_name='pogoprotos.networking.responses.GetBuddyWalkedResponse.last_km_awarded', index=4,
+      number=5, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -75,7 +82,7 @@ _GETBUDDYWALKEDRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=143,
-  serialized_end=294,
+  serialized_end=319,
 )
 
 _GETBUDDYWALKEDRESPONSE.fields_by_name['family_candy_id'].enum_type = pogoprotos_dot_enums_dot_pokemon__family__id__pb2._POKEMONFAMILYID

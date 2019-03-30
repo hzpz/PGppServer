@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.networking.requests.messages',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\nFpogoprotos/networking/requests/messages/get_raid_details_message.proto\x12\'pogoprotos.networking.requests.messages\"\x84\x01\n\x15GetRaidDetailsMessage\x12\x11\n\traid_seed\x18\x01 \x01(\x03\x12\x0e\n\x06gym_id\x18\x02 \x01(\t\x12\x10\n\x08lobby_id\x18\x03 \x03(\x05\x12\x1a\n\x12player_lat_degrees\x18\x04 \x01(\x01\x12\x1a\n\x12player_lng_degrees\x18\x05 \x01(\x01\x62\x06proto3')
+  serialized_pb=_b('\nFpogoprotos/networking/requests/messages/get_raid_details_message.proto\x12\'pogoprotos.networking.requests.messages\"\xb6\x01\n\x15GetRaidDetailsMessage\x12\x11\n\traid_seed\x18\x01 \x01(\x03\x12\x0e\n\x06gym_id\x18\x02 \x01(\t\x12\x10\n\x08lobby_id\x18\x03 \x03(\x05\x12\x1a\n\x12player_lat_degrees\x18\x04 \x01(\x01\x12\x1a\n\x12player_lng_degrees\x18\x05 \x01(\x01\x12\x17\n\x0fgym_lat_degrees\x18\x06 \x01(\x01\x12\x17\n\x0fgym_lng_degrees\x18\x07 \x01(\x01\x62\x06proto3')
 )
 
 
@@ -67,6 +67,20 @@ _GETRAIDDETAILSMESSAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='gym_lat_degrees', full_name='pogoprotos.networking.requests.messages.GetRaidDetailsMessage.gym_lat_degrees', index=5,
+      number=6, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='gym_lng_degrees', full_name='pogoprotos.networking.requests.messages.GetRaidDetailsMessage.gym_lng_degrees', index=6,
+      number=7, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -80,7 +94,7 @@ _GETRAIDDETAILSMESSAGE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=116,
-  serialized_end=248,
+  serialized_end=298,
 )
 
 DESCRIPTOR.message_types_by_name['GetRaidDetailsMessage'] = _GETRAIDDETAILSMESSAGE

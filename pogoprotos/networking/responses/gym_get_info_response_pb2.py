@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.networking.responses',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n;pogoprotos/networking/responses/gym_get_info_response.proto\x12\x1fpogoprotos.networking.responses\x1a\x32pogoprotos/data/gym/gym_status_and_defenders.proto\x1a-pogoprotos/data/badge/awarded_gym_badge.proto\x1a%pogoprotos/data/raid/event_info.proto\x1a,pogoprotos/map/weather/display_weather.proto\"\x9b\x04\n\x12GymGetInfoResponse\x12L\n\x18gym_status_and_defenders\x18\x01 \x01(\x0b\x32*.pogoprotos.data.gym.GymStatusAndDefenders\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0b\n\x03url\x18\x03 \x01(\t\x12J\n\x06result\x18\x04 \x01(\x0e\x32:.pogoprotos.networking.responses.GymGetInfoResponse.Result\x12\x13\n\x0b\x64\x65scription\x18\x05 \x01(\t\x12\x15\n\rsecondary_url\x18\x06 \x01(\t\x12\x41\n\x11\x61warded_gym_badge\x18\x07 \x01(\x0b\x32&.pogoprotos.data.badge.AwardedGymBadge\x12\x19\n\x11\x63heckin_image_url\x18\x08 \x01(\t\x12\x33\n\nevent_info\x18\t \x01(\x0b\x32\x1f.pogoprotos.data.raid.EventInfo\x12?\n\x0f\x64isplay_weather\x18\n \x01(\x0b\x32&.pogoprotos.map.weather.DisplayWeather\"P\n\x06Result\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x16\n\x12\x45RROR_NOT_IN_RANGE\x10\x02\x12\x16\n\x12\x45RROR_GYM_DISABLED\x10\x03\x62\x06proto3')
+  serialized_pb=_b('\n;pogoprotos/networking/responses/gym_get_info_response.proto\x12\x1fpogoprotos.networking.responses\x1a\x32pogoprotos/data/gym/gym_status_and_defenders.proto\x1a-pogoprotos/data/badge/awarded_gym_badge.proto\x1a%pogoprotos/data/raid/event_info.proto\x1a,pogoprotos/map/weather/display_weather.proto\"\xe8\x04\n\x12GymGetInfoResponse\x12L\n\x18gym_status_and_defenders\x18\x01 \x01(\x0b\x32*.pogoprotos.data.gym.GymStatusAndDefenders\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0b\n\x03url\x18\x03 \x01(\t\x12J\n\x06result\x18\x04 \x01(\x0e\x32:.pogoprotos.networking.responses.GymGetInfoResponse.Result\x12\x13\n\x0b\x64\x65scription\x18\x05 \x01(\t\x12\x15\n\rsecondary_url\x18\x06 \x01(\t\x12\x41\n\x11\x61warded_gym_badge\x18\x07 \x01(\x0b\x32&.pogoprotos.data.badge.AwardedGymBadge\x12\x19\n\x11\x63heckin_image_url\x18\x08 \x01(\t\x12\x33\n\nevent_info\x18\t \x01(\x0b\x32\x1f.pogoprotos.data.raid.EventInfo\x12?\n\x0f\x64isplay_weather\x18\n \x01(\x0b\x32&.pogoprotos.map.weather.DisplayWeather\x12\x13\n\x0bpromo_image\x18\x0b \x03(\t\x12\x19\n\x11promo_description\x18\x0c \x03(\t\x12\x1b\n\x13\x63\x61ll_to_action_link\x18\r \x01(\t\"P\n\x06Result\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x16\n\x12\x45RROR_NOT_IN_RANGE\x10\x02\x12\x16\n\x12\x45RROR_GYM_DISABLED\x10\x03\x62\x06proto3')
   ,
   dependencies=[pogoprotos_dot_data_dot_gym_dot_gym__status__and__defenders__pb2.DESCRIPTOR,pogoprotos_dot_data_dot_badge_dot_awarded__gym__badge__pb2.DESCRIPTOR,pogoprotos_dot_data_dot_raid_dot_event__info__pb2.DESCRIPTOR,pogoprotos_dot_map_dot_weather_dot_display__weather__pb2.DESCRIPTOR,])
 
@@ -54,8 +54,8 @@ _GYMGETINFORESPONSE_RESULT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=740,
-  serialized_end=820,
+  serialized_start=817,
+  serialized_end=897,
 )
 _sym_db.RegisterEnumDescriptor(_GYMGETINFORESPONSE_RESULT)
 
@@ -137,6 +137,27 @@ _GYMGETINFORESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='promo_image', full_name='pogoprotos.networking.responses.GymGetInfoResponse.promo_image', index=10,
+      number=11, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='promo_description', full_name='pogoprotos.networking.responses.GymGetInfoResponse.promo_description', index=11,
+      number=12, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='call_to_action_link', full_name='pogoprotos.networking.responses.GymGetInfoResponse.call_to_action_link', index=12,
+      number=13, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -151,7 +172,7 @@ _GYMGETINFORESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=281,
-  serialized_end=820,
+  serialized_end=897,
 )
 
 _GYMGETINFORESPONSE.fields_by_name['gym_status_and_defenders'].message_type = pogoprotos_dot_data_dot_gym_dot_gym__status__and__defenders__pb2._GYMSTATUSANDDEFENDERS

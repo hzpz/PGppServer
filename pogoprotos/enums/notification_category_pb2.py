@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.enums',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n,pogoprotos/enums/notification_category.proto\x12\x10pogoprotos.enums*\xbf\x04\n\x14NotificationCategory\x12\x1f\n\x1bUNSET_NOTIFICATION_CATEGORY\x10\x00\x12\x0f\n\x0bGYM_REMOVAL\x10\x01\x12\x12\n\x0ePOKEMON_HUNGRY\x10\x02\x12\x19\n\x15\x45XCLUSIVE_RAID_INVITE\x10\x03\x12\x1f\n\x1b\x45XCLUSIVE_RAID_CANCELLATION\x10\x04\x12 \n\x1cSHARED_EXCLUSIVE_RAID_INVITE\x10\x05\x12\x14\n\x10GIFTBOX_INCOMING\x10\x06\x12\x15\n\x11GIFTBOX_DELIVERED\x10\x07\x12\x1f\n\x1b\x46RIENDSHIP_MILESTONE_REWARD\x10\x08\x12#\n\x1fGYM_BATTLE_FRIENDSHIP_INCREMENT\x10\t\x12\x14\n\x10\x42GMODE_EGG_HATCH\x10\n\x12\x16\n\x12\x42GMODE_BUDDY_CANDY\x10\x0b\x12 \n\x1c\x42GMODE_WEEKLY_FITNESS_REPORT\x10\x0c\x12\x1f\n\x1b\x42GMODE_OFF_SESSION_DISTANCE\x10\r\x12\x18\n\x14\x42GMODE_POI_PROXIMITY\x10\x0e\x12\x1b\n\x17\x43OMBAT_CHALLENGE_OPENED\x10\x0f\x12\x1a\n\x16\x46RIEND_INVITE_RECEIVED\x10\x10\x12\x1a\n\x16\x46RIEND_INVITE_ACCEPTED\x10\x11\x12\x1c\n\x18\x42GMODE_NAMED_BUDDY_CANDY\x10\x12\x12\x12\n\x0e\x41PP_BADGE_ONLY\x10\x13\x62\x06proto3')
+  serialized_pb=_b('\n,pogoprotos/enums/notification_category.proto\x12\x10pogoprotos.enums*\xd1\x04\n\x14NotificationCategory\x12\x1f\n\x1bUNSET_NOTIFICATION_CATEGORY\x10\x00\x12\x0f\n\x0bGYM_REMOVAL\x10\x01\x12\x12\n\x0ePOKEMON_HUNGRY\x10\x02\x12\x19\n\x15\x45XCLUSIVE_RAID_INVITE\x10\x03\x12\x1f\n\x1b\x45XCLUSIVE_RAID_CANCELLATION\x10\x04\x12 \n\x1cSHARED_EXCLUSIVE_RAID_INVITE\x10\x05\x12\x14\n\x10GIFTBOX_INCOMING\x10\x06\x12\x15\n\x11GIFTBOX_DELIVERED\x10\x07\x12\x1f\n\x1b\x46RIENDSHIP_MILESTONE_REWARD\x10\x08\x12#\n\x1fGYM_BATTLE_FRIENDSHIP_INCREMENT\x10\t\x12\x14\n\x10\x42GMODE_EGG_HATCH\x10\n\x12\x16\n\x12\x42GMODE_BUDDY_CANDY\x10\x0b\x12 \n\x1c\x42GMODE_WEEKLY_FITNESS_REPORT\x10\x0c\x12\x1f\n\x1b\x42GMODE_OFF_SESSION_DISTANCE\x10\r\x12\x18\n\x14\x42GMODE_POI_PROXIMITY\x10\x0e\x12\x1c\n\x18\x42GMODE_NAMED_BUDDY_CANDY\x10\x0f\x12\x12\n\x0e\x41PP_BADGE_ONLY\x10\x10\x12\x1b\n\x17\x43OMBAT_CHALLENGE_OPENED\x10\x11\x12\x10\n\x0cLUCKY_FRIEND\x10\x12\x12\x1a\n\x16\x46RIEND_INVITE_RECEIVED\x10\x13\x12\x1a\n\x16\x46RIEND_INVITE_ACCEPTED\x10\x14\x62\x06proto3')
 )
 
 _NOTIFICATIONCATEGORY = _descriptor.EnumDescriptor(
@@ -90,30 +90,34 @@ _NOTIFICATIONCATEGORY = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='COMBAT_CHALLENGE_OPENED', index=15, number=15,
+      name='BGMODE_NAMED_BUDDY_CANDY', index=15, number=15,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='FRIEND_INVITE_RECEIVED', index=16, number=16,
+      name='APP_BADGE_ONLY', index=16, number=16,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='FRIEND_INVITE_ACCEPTED', index=17, number=17,
+      name='COMBAT_CHALLENGE_OPENED', index=17, number=17,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='BGMODE_NAMED_BUDDY_CANDY', index=18, number=18,
+      name='LUCKY_FRIEND', index=18, number=18,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='APP_BADGE_ONLY', index=19, number=19,
+      name='FRIEND_INVITE_RECEIVED', index=19, number=19,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='FRIEND_INVITE_ACCEPTED', index=20, number=20,
       serialized_options=None,
       type=None),
   ],
   containing_type=None,
   serialized_options=None,
   serialized_start=67,
-  serialized_end=642,
+  serialized_end=660,
 )
 _sym_db.RegisterEnumDescriptor(_NOTIFICATIONCATEGORY)
 
@@ -133,11 +137,12 @@ BGMODE_BUDDY_CANDY = 11
 BGMODE_WEEKLY_FITNESS_REPORT = 12
 BGMODE_OFF_SESSION_DISTANCE = 13
 BGMODE_POI_PROXIMITY = 14
-COMBAT_CHALLENGE_OPENED = 15
-FRIEND_INVITE_RECEIVED = 16
-FRIEND_INVITE_ACCEPTED = 17
-BGMODE_NAMED_BUDDY_CANDY = 18
-APP_BADGE_ONLY = 19
+BGMODE_NAMED_BUDDY_CANDY = 15
+APP_BADGE_ONLY = 16
+COMBAT_CHALLENGE_OPENED = 17
+LUCKY_FRIEND = 18
+FRIEND_INVITE_RECEIVED = 19
+FRIEND_INVITE_ACCEPTED = 20
 
 
 DESCRIPTOR.enum_types_by_name['NotificationCategory'] = _NOTIFICATIONCATEGORY

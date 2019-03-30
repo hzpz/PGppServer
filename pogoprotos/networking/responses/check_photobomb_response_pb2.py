@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.networking.responses',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n>pogoprotos/networking/responses/check_photobomb_response.proto\x12\x1fpogoprotos.networking.responses\x1a%pogoprotos/data/pokemon_display.proto\x1a!pogoprotos/enums/pokemon_id.proto\"\xd3\x02\n\x16\x43heckPhotobombResponse\x12N\n\x06status\x18\x01 \x01(\x0e\x32>.pogoprotos.networking.responses.CheckPhotobombResponse.Status\x12\x39\n\x14photobomb_pokemon_id\x18\x02 \x01(\x0e\x32\x1b.pogoprotos.enums.PokemonId\x12\x42\n\x19photobomb_pokemon_display\x18\x03 \x01(\x0b\x32\x1f.pogoprotos.data.PokemonDisplay\x12\x14\n\x0c\x65ncounter_id\x18\x04 \x01(\x06\"T\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x1f\n\x1b\x45RROR_PHOTO_POKEMON_INVALID\x10\x02\x12\x11\n\rERROR_UNKNOWN\x10\x03\x62\x06proto3')
+  serialized_pb=_b('\n>pogoprotos/networking/responses/check_photobomb_response.proto\x12\x1fpogoprotos.networking.responses\x1a%pogoprotos/data/pokemon_display.proto\x1a!pogoprotos/enums/pokemon_id.proto\"\xe0\x02\n\x16\x43heckPhotobombResponse\x12N\n\x06status\x18\x01 \x01(\x0e\x32>.pogoprotos.networking.responses.CheckPhotobombResponse.Status\x12\x39\n\x14photobomb_pokemon_id\x18\x02 \x01(\x0e\x32\x1b.pogoprotos.enums.PokemonId\x12\x42\n\x19photobomb_pokemon_display\x18\x03 \x01(\x0b\x32\x1f.pogoprotos.data.PokemonDisplay\x12\x14\n\x0c\x65ncounter_id\x18\x04 \x01(\x06\x12\x0b\n\x03uri\x18\x05 \x01(\t\"T\n\x06Status\x12\t\n\x05UNSET\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x1f\n\x1b\x45RROR_PHOTO_POKEMON_INVALID\x10\x02\x12\x11\n\rERROR_UNKNOWN\x10\x03\x62\x06proto3')
   ,
   dependencies=[pogoprotos_dot_data_dot_pokemon__display__pb2.DESCRIPTOR,pogoprotos_dot_enums_dot_pokemon__id__pb2.DESCRIPTOR,])
 
@@ -52,8 +52,8 @@ _CHECKPHOTOBOMBRESPONSE_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=429,
-  serialized_end=513,
+  serialized_start=442,
+  serialized_end=526,
 )
 _sym_db.RegisterEnumDescriptor(_CHECKPHOTOBOMBRESPONSE_STATUS)
 
@@ -93,6 +93,13 @@ _CHECKPHOTOBOMBRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='uri', full_name='pogoprotos.networking.responses.CheckPhotobombResponse.uri', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -107,7 +114,7 @@ _CHECKPHOTOBOMBRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=174,
-  serialized_end=513,
+  serialized_end=526,
 )
 
 _CHECKPHOTOBOMBRESPONSE.fields_by_name['status'].enum_type = _CHECKPHOTOBOMBRESPONSE_STATUS

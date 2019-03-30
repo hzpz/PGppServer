@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.data.raid',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n$pogoprotos/data/raid/raid_info.proto\x12\x14pogoprotos.data.raid\x1a\"pogoprotos/data/pokemon_data.proto\x1a!pogoprotos/enums/raid_level.proto\"\x86\x02\n\x08RaidInfo\x12\x11\n\traid_seed\x18\x01 \x01(\x03\x12\x15\n\rraid_spawn_ms\x18\x02 \x01(\x03\x12\x16\n\x0eraid_battle_ms\x18\x03 \x01(\x03\x12\x13\n\x0braid_end_ms\x18\x04 \x01(\x03\x12\x32\n\x0craid_pokemon\x18\x05 \x01(\x0b\x32\x1c.pogoprotos.data.PokemonData\x12/\n\nraid_level\x18\x06 \x01(\x0e\x32\x1b.pogoprotos.enums.RaidLevel\x12\x10\n\x08\x63omplete\x18\x07 \x01(\x08\x12\x14\n\x0cis_exclusive\x18\x08 \x01(\x08\x12\x16\n\x0eis_raid_hidden\x18\t \x01(\x08\x62\x06proto3')
+  serialized_pb=_b('\n$pogoprotos/data/raid/raid_info.proto\x12\x14pogoprotos.data.raid\x1a\"pogoprotos/data/pokemon_data.proto\x1a!pogoprotos/enums/raid_level.proto\"\xc7\x02\n\x08RaidInfo\x12\x11\n\traid_seed\x18\x01 \x01(\x03\x12\x15\n\rraid_spawn_ms\x18\x02 \x01(\x03\x12\x16\n\x0eraid_battle_ms\x18\x03 \x01(\x03\x12\x13\n\x0braid_end_ms\x18\x04 \x01(\x03\x12\x32\n\x0craid_pokemon\x18\x05 \x01(\x0b\x32\x1c.pogoprotos.data.PokemonData\x12/\n\nraid_level\x18\x06 \x01(\x0e\x32\x1b.pogoprotos.enums.RaidLevel\x12\x10\n\x08\x63omplete\x18\x07 \x01(\x08\x12\x14\n\x0cis_exclusive\x18\x08 \x01(\x08\x12\x16\n\x0eis_raid_hidden\x18\t \x01(\x08\x12\x19\n\x11is_scheduled_raid\x18\n \x01(\x08\x12\x0f\n\x07is_free\x18\x0b \x01(\x08\x12\x13\n\x0b\x63\x61mpaign_id\x18\x0c \x01(\tb\x06proto3')
   ,
   dependencies=[pogoprotos_dot_data_dot_pokemon__data__pb2.DESCRIPTOR,pogoprotos_dot_enums_dot_raid__level__pb2.DESCRIPTOR,])
 
@@ -98,6 +98,27 @@ _RAIDINFO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='is_scheduled_raid', full_name='pogoprotos.data.raid.RaidInfo.is_scheduled_raid', index=9,
+      number=10, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='is_free', full_name='pogoprotos.data.raid.RaidInfo.is_free', index=10,
+      number=11, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='campaign_id', full_name='pogoprotos.data.raid.RaidInfo.campaign_id', index=11,
+      number=12, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -111,7 +132,7 @@ _RAIDINFO = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=134,
-  serialized_end=396,
+  serialized_end=461,
 )
 
 _RAIDINFO.fields_by_name['raid_pokemon'].message_type = pogoprotos_dot_data_dot_pokemon__data__pb2._POKEMONDATA

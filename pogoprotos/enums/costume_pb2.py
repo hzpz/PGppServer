@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.enums',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x1epogoprotos/enums/costume.proto\x12\x10pogoprotos.enums*\xb1\x01\n\x07\x43ostume\x12\x11\n\rCOSTUME_UNSET\x10\x00\x12\x10\n\x0cHOLIDAY_2016\x10\x01\x12\x0f\n\x0b\x41NNIVERSARY\x10\x02\x12\x18\n\x14ONE_YEAR_ANNIVERSARY\x10\x03\x12\x12\n\x0eHALLOWEEN_2017\x10\x04\x12\x0f\n\x0bSUMMER_2018\x10\x05\x12\r\n\tFALL_2018\x10\x06\x12\x11\n\rNOVEMBER_2018\x10\x07\x12\x0f\n\x0bWINTER_2018\x10\x08\x62\x06proto3')
+  serialized_pb=_b('\n\x1epogoprotos/enums/costume.proto\x12\x10pogoprotos.enums*\xbf\x01\n\x07\x43ostume\x12\x11\n\rCOSTUME_UNSET\x10\x00\x12\x10\n\x0cHOLIDAY_2016\x10\x01\x12\x0f\n\x0b\x41NNIVERSARY\x10\x02\x12\x18\n\x14ONE_YEAR_ANNIVERSARY\x10\x03\x12\x12\n\x0eHALLOWEEN_2017\x10\x04\x12\x0f\n\x0bSUMMER_2018\x10\x05\x12\r\n\tFALL_2018\x10\x06\x12\x11\n\rNOVEMBER_2018\x10\x07\x12\x0f\n\x0bWINTER_2018\x10\x08\x12\x0c\n\x08\x46\x45\x42_2019\x10\tb\x06proto3')
 )
 
 _COSTUME = _descriptor.EnumDescriptor(
@@ -65,11 +65,15 @@ _COSTUME = _descriptor.EnumDescriptor(
       name='WINTER_2018', index=8, number=8,
       serialized_options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='FEB_2019', index=9, number=9,
+      serialized_options=None,
+      type=None),
   ],
   containing_type=None,
   serialized_options=None,
   serialized_start=53,
-  serialized_end=230,
+  serialized_end=244,
 )
 _sym_db.RegisterEnumDescriptor(_COSTUME)
 
@@ -83,6 +87,7 @@ SUMMER_2018 = 5
 FALL_2018 = 6
 NOVEMBER_2018 = 7
 WINTER_2018 = 8
+FEB_2019 = 9
 
 
 DESCRIPTOR.enum_types_by_name['Costume'] = _COSTUME

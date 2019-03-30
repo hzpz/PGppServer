@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.settings.master',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n.pogoprotos/settings/master/form_settings.proto\x12\x1apogoprotos.settings.master\x1a\x1bpogoprotos/enums/form.proto\x1a!pogoprotos/enums/pokemon_id.proto\"\xc4\x01\n\x0c\x46ormSettings\x12,\n\x07pokemon\x18\x01 \x01(\x0e\x32\x1b.pogoprotos.enums.PokemonId\x12<\n\x05\x66orms\x18\x02 \x03(\x0b\x32-.pogoprotos.settings.master.FormSettings.Form\x1aH\n\x04\x46orm\x12$\n\x04\x66orm\x18\x01 \x01(\x0e\x32\x16.pogoprotos.enums.Form\x12\x1a\n\x12\x61sset_bundle_value\x18\x02 \x01(\x05\x62\x06proto3')
+  serialized_pb=_b('\n.pogoprotos/settings/master/form_settings.proto\x12\x1apogoprotos.settings.master\x1a\x1bpogoprotos/enums/form.proto\x1a!pogoprotos/enums/pokemon_id.proto\"\xe1\x01\n\x0c\x46ormSettings\x12,\n\x07pokemon\x18\x01 \x01(\x0e\x32\x1b.pogoprotos.enums.PokemonId\x12<\n\x05\x66orms\x18\x02 \x03(\x0b\x32-.pogoprotos.settings.master.FormSettings.Form\x1a\x65\n\x04\x46orm\x12$\n\x04\x66orm\x18\x01 \x01(\x0e\x32\x16.pogoprotos.enums.Form\x12\x1a\n\x12\x61sset_bundle_value\x18\x02 \x01(\x05\x12\x1b\n\x13\x61sset_bundle_suffix\x18\x03 \x01(\tb\x06proto3')
   ,
   dependencies=[pogoprotos_dot_enums_dot_form__pb2.DESCRIPTOR,pogoprotos_dot_enums_dot_pokemon__id__pb2.DESCRIPTOR,])
 
@@ -49,6 +49,13 @@ _FORMSETTINGS_FORM = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='asset_bundle_suffix', full_name='pogoprotos.settings.master.FormSettings.Form.asset_bundle_suffix', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -62,7 +69,7 @@ _FORMSETTINGS_FORM = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=267,
-  serialized_end=339,
+  serialized_end=368,
 )
 
 _FORMSETTINGS = _descriptor.Descriptor(
@@ -99,7 +106,7 @@ _FORMSETTINGS = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=143,
-  serialized_end=339,
+  serialized_end=368,
 )
 
 _FORMSETTINGS_FORM.fields_by_name['form'].enum_type = pogoprotos_dot_enums_dot_form__pb2._FORM

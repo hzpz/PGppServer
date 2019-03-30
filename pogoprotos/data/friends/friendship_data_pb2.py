@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pogoprotos.data.friends',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n-pogoprotos/data/friends/friendship_data.proto\x12\x17pogoprotos.data.friends\x1a\x33pogoprotos/data/friends/friendship_level_data.proto\x1a+pogoprotos/data/gift/gift_box_details.proto\"\xde\x01\n\x0e\x46riendshipData\x12K\n\x15\x66riendship_level_data\x18\x01 \x01(\x0b\x32,.pogoprotos.data.friends.FriendshipLevelData\x12=\n\x0fgiftbox_details\x18\x02 \x03(\x0b\x32$.pogoprotos.data.gift.GiftBoxDetails\x12\x10\n\x08\x63odename\x18\x03 \x01(\t\x12\x10\n\x08nickname\x18\x04 \x01(\t\x12\x1c\n\x14open_trade_expire_ms\x18\x05 \x01(\x03\x62\x06proto3')
+  serialized_pb=_b('\n-pogoprotos/data/friends/friendship_data.proto\x12\x17pogoprotos.data.friends\x1a\x33pogoprotos/data/friends/friendship_level_data.proto\x1a+pogoprotos/data/gift/gift_box_details.proto\"\x85\x02\n\x0e\x46riendshipData\x12K\n\x15\x66riendship_level_data\x18\x01 \x01(\x0b\x32,.pogoprotos.data.friends.FriendshipLevelData\x12=\n\x0fgiftbox_details\x18\x02 \x03(\x0b\x32$.pogoprotos.data.gift.GiftBoxDetails\x12\x10\n\x08\x63odename\x18\x03 \x01(\t\x12\x10\n\x08nickname\x18\x04 \x01(\t\x12\x1c\n\x14open_trade_expire_ms\x18\x05 \x01(\x03\x12\x10\n\x08is_lucky\x18\x06 \x01(\x08\x12\x13\n\x0blucky_count\x18\x07 \x01(\x05\x62\x06proto3')
   ,
   dependencies=[pogoprotos_dot_data_dot_friends_dot_friendship__level__data__pb2.DESCRIPTOR,pogoprotos_dot_data_dot_gift_dot_gift__box__details__pb2.DESCRIPTOR,])
 
@@ -70,6 +70,20 @@ _FRIENDSHIPDATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='is_lucky', full_name='pogoprotos.data.friends.FriendshipData.is_lucky', index=5,
+      number=6, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='lucky_count', full_name='pogoprotos.data.friends.FriendshipData.lucky_count', index=6,
+      number=7, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -83,7 +97,7 @@ _FRIENDSHIPDATA = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=173,
-  serialized_end=395,
+  serialized_end=434,
 )
 
 _FRIENDSHIPDATA.fields_by_name['friendship_level_data'].message_type = pogoprotos_dot_data_dot_friends_dot_friendship__level__data__pb2._FRIENDSHIPLEVELDATA
