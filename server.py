@@ -1,9 +1,8 @@
 import sys
-
-import time
 import base64
 import logging
 from queue import Queue
+
 from threading import Thread
 from datetime import datetime
 import pickledb
@@ -29,14 +28,15 @@ publish_queue = Queue()
 
 
 @get('/loc')
+@post('/loc')
 def loc():
     global location_provider
 
-    if not request.query.uuid:
+    device_uuid = get_device_uuid()
+    if not device_uuid:
         log.error('Query was empty or invalid: %s', request.query_string)
         return http_400('Query was empty or invalid')
 
-    device_uuid = request.query.uuid
     try:
         location = location_provider[device_uuid]
     except SizeExceededError:
@@ -62,7 +62,7 @@ def data():
 
     for gym in get_unique_gyms(pg_data):
         if has_raid(gym):
-            device_uuid = pg_data.get('uuid')
+            device_uuid = get_device_uuid()
             raid = parse_raid(gym)
             log.debug('(%s) Raw raid: %s', device_uuid, raid)
 
@@ -83,6 +83,17 @@ def data():
             enqueue(raid)
 
 
+def get_device_uuid():
+    if request.query.uuid:
+        return request.query.uuid
+
+    if request.json:
+        if request.json.get('uuid'):
+            return request.json.get('uuid')
+        else:
+            return request.json.get('devicename')
+
+
 def http_400(error_message):
     response.status = 400
     return {
@@ -95,7 +106,7 @@ def get_unique_gyms(pg_data):
     unique_gyms = list({gym['gym_id']: gym for gym in gyms}.values())
     if len(gyms) != len(unique_gyms):
         duplicate_gym_count = len(gyms) - len(unique_gyms)
-        log.debug('(%s) Received %s duplicate gym(s)', pg_data.get('uuid'), duplicate_gym_count)
+        log.debug('(%s) Received %s duplicate gym(s)', get_device_uuid(), duplicate_gym_count)
     return unique_gyms
 
 
@@ -106,11 +117,26 @@ def get_gyms(pg_data):
         protos = pg_data.get('protos')
         gyms = []
         for proto in protos:
-            log.debug('(%s) Raw proto: %s', pg_data.get('uuid'), proto)
+            log.debug('(%s) Raw proto: %s', get_device_uuid(), proto)
             if 'GetMapObjects' in proto:
-                gmoString = proto.get('GetMapObjects')
+                gmo_string = proto.get('GetMapObjects')
                 gmo = GetMapObjectsResponse()
-                gmo.ParseFromString(base64.b64decode(gmoString))
+                gmo.ParseFromString(base64.b64decode(gmo_string))
+                for map_cell in gmo.map_cells:
+                    for fort in map_cell.forts:
+                        if fort.type is not FortType.Value('GYM'):
+                            continue
+                        gyms.append(parse_fort(fort))
+        return gyms
+    elif 'contents' in pg_data:
+        contents = pg_data.get('contents')
+        gyms = []
+        for content in contents:
+            log.debug('(%s) Raw proto: %s', get_device_uuid(), content)
+            if content.get('method') == 106:
+                gmo_string = content.get('data')
+                gmo = GetMapObjectsResponse()
+                gmo.ParseFromString(base64.b64decode(gmo_string))
                 for map_cell in gmo.map_cells:
                     for fort in map_cell.forts:
                         if fort.type is not FortType.Value('GYM'):
@@ -172,7 +198,7 @@ def publish_raids():
             log.warning('Already published raid at %s', raid['gym_id'])
             continue
         log.debug('Publishing egg/raid at %s to webhook...', raid['gym_id'])
-        send_to_webhook(raid)
+        send_to_webhook("raid", raid)
         mark_seen(raid)
         publish_queue.task_done()
 
@@ -246,10 +272,10 @@ def parse_timestamp_in_millis(timestamp_in_millis):
     return datetime.utcfromtimestamp(timestamp_in_millis / 1000)
 
 
-def send_to_webhook(raid):
+def send_to_webhook(type, message):
     requests.post(config.WEBHOOK_URL, json=[{
-        "type": "raid",
-        "message": raid
+        "type": type,
+        "message": message
     }])
 
 
