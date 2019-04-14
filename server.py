@@ -61,7 +61,7 @@ def data():
         log.error('Body was empty or invalid: %s', request.body.read())
         return http_400('Body was empty or invalid')
 
-    for gym in get_unique_gyms(pg_data):
+    for gym in get_unique_and_filtered_gyms(pg_data):
         if has_raid(gym):
             device_uuid = get_device_uuid()
             raid = parse_raid(gym)
@@ -102,13 +102,17 @@ def http_400(error_message):
     }
 
 
-def get_unique_gyms(pg_data):
+def get_unique_and_filtered_gyms(pg_data):
     gyms = get_gyms(pg_data)
     unique_gyms = list({gym['gym_id']: gym for gym in gyms}.values())
     if len(gyms) != len(unique_gyms):
         duplicate_gym_count = len(gyms) - len(unique_gyms)
         log.debug('(%s) Received %s duplicate gym(s)', get_device_uuid(), duplicate_gym_count)
-    return unique_gyms
+    filtered_gyms = list(gym for gym in unique_gyms if gym['gym_id'] not in config.IGNORED_GYMS)
+    if len(unique_gyms) != len(filtered_gyms):
+        ignored_gym_count = len(unique_gyms) - len(filtered_gyms)
+        log.debug('(%s) Ignored %s gym(s)', get_device_uuid(), ignored_gym_count)
+    return filtered_gyms
 
 
 def get_gyms(pg_data):
